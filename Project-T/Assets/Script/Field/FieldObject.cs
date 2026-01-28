@@ -8,12 +8,12 @@ namespace Script.Field
         public enum FieldStateEnum
         {
             EMPTY = 0,
-            CO_HAT = 1,
-            CHIN = 2
+            Planted = 1,
+            Ripe = 2
         }
         FieldStateEnum state = FieldStateEnum.EMPTY;
-        [SerializeField] Sprite empty,co_hat,chin;
-        private SpriteRenderer thisSpriteRender;
+        [SerializeField] Sprite empty_sprite,planted_sprite,ripe_sprite;
+        private SpriteRenderer this_sprite_render;
         [SerializeField] float wait_co_hat_2_chin_time_sec = 30;
         
         public void SetState(FieldStateEnum newState)
@@ -22,27 +22,27 @@ namespace Script.Field
             switch (state)
             {
                 case FieldStateEnum.EMPTY:
-                    thisSpriteRender.sprite = empty;
+                    this_sprite_render.sprite = empty_sprite;
                     break;
-                case FieldStateEnum.CO_HAT:
-                    thisSpriteRender.sprite = co_hat;
+                case FieldStateEnum.Planted:
+                    this_sprite_render.sprite = planted_sprite;
                     onCoHat();
                     break;
-                case FieldStateEnum.CHIN:
-                    thisSpriteRender.sprite = chin;
+                case FieldStateEnum.Ripe:
+                    this_sprite_render.sprite = ripe_sprite;
                     break;
             }
         }
 
         void Start()
         {
-            thisSpriteRender = GetComponent<SpriteRenderer>();
+            this_sprite_render = GetComponent<SpriteRenderer>();
         }
         
         async void onCoHat()
         {
             await Task.Delay((int)(wait_co_hat_2_chin_time_sec * 1000));
-            SetState(FieldStateEnum.CHIN);
+            SetState(FieldStateEnum.Ripe);
         }
         public void Update()
         {
