@@ -23,6 +23,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GodOffer",
+                    "type": "Button",
+                    "id": "fa40aa8c-e660-49ed-8c5b-f3ed5393a532",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AcceptOffer",
+                    "type": "Button",
+                    "id": "4f9ec844-db28-4151-ac06-abcf73ae85c0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RejectOffer",
+                    "type": "Button",
+                    "id": "2e46a2e1-7488-43f4-9fd4-145757143351",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -89,6 +116,39 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Plant",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a668b3c5-1eb2-4c4e-8d09-51f7417a96b2",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "GodOffer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b4ccb96-28e1-4c45-a26f-a1a5e177418b",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "AcceptOffer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcd5629b-27f2-47b2-bcb8-443fa317ab00",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RejectOffer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

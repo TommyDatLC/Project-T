@@ -13,13 +13,32 @@ public class GameManager : MonoBehaviour
        inputHandler.Enable();
        inputHandler.Player.Enable();
        inputHandler.Player.Plant.Enable();
+       inputHandler.Player.GodOffer.Enable();
+       inputHandler.Player.RejectOffer.Enable();
+       inputHandler.Player.AcceptOffer.Enable();
        inputHandler.Player.Plant.performed += OnInputPlanted;
+       inputHandler.Player.GodOffer.performed += OnGodOfferOnperformed;
+       inputHandler.Player.AcceptOffer.performed += AcceptOfferOnperformed ;
+       inputHandler.Player.RejectOffer.performed += RejectOfferOnperformed;
    }
 
+   private void RejectOfferOnperformed(InputAction.CallbackContext obj)
+   {
+       player.AccptOffer =  false;
+   }
+
+   void AcceptOfferOnperformed(InputAction.CallbackContext context)
+   {
+       player.AccptOffer =  true;
+   }
+   void OnGodOfferOnperformed(InputAction.CallbackContext context)
+   {
+       player.Offer();
+   }
    private void OnInputPlanted(InputAction.CallbackContext ctx)
    {
        player.Plant();
-       player.harvest();
+       player.Harvest();
    }
 
   

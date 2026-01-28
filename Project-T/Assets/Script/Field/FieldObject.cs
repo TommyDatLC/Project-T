@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Script.Field
 {
-    public class FieldObject : MonoBehaviour
+    public class FieldObject : Interactable
     {
         
         public enum FieldStateEnum

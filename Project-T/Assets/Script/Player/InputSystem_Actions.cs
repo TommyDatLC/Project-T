@@ -109,6 +109,33 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GodOffer"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa40aa8c-e660-49ed-8c5b-f3ed5393a532"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AcceptOffer"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f9ec844-db28-4151-ac06-abcf73ae85c0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RejectOffer"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e46a2e1-7488-43f4-9fd4-145757143351"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -175,6 +202,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Plant"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a668b3c5-1eb2-4c4e-8d09-51f7417a96b2"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""GodOffer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b4ccb96-28e1-4c45-a26f-a1a5e177418b"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""AcceptOffer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcd5629b-27f2-47b2-bcb8-443fa317ab00"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RejectOffer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -764,6 +824,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Plant = m_Player.FindAction("Plant", throwIfNotFound: true);
+        m_Player_GodOffer = m_Player.FindAction("GodOffer", throwIfNotFound: true);
+        m_Player_AcceptOffer = m_Player.FindAction("AcceptOffer", throwIfNotFound: true);
+        m_Player_RejectOffer = m_Player.FindAction("RejectOffer", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -859,6 +922,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Plant;
+    private readonly InputAction m_Player_GodOffer;
+    private readonly InputAction m_Player_AcceptOffer;
+    private readonly InputAction m_Player_RejectOffer;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -878,6 +944,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Plant".
         /// </summary>
         public InputAction @Plant => m_Wrapper.m_Player_Plant;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/GodOffer".
+        /// </summary>
+        public InputAction @GodOffer => m_Wrapper.m_Player_GodOffer;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AcceptOffer".
+        /// </summary>
+        public InputAction @AcceptOffer => m_Wrapper.m_Player_AcceptOffer;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/RejectOffer".
+        /// </summary>
+        public InputAction @RejectOffer => m_Wrapper.m_Player_RejectOffer;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -910,6 +988,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Plant.started += instance.OnPlant;
             @Plant.performed += instance.OnPlant;
             @Plant.canceled += instance.OnPlant;
+            @GodOffer.started += instance.OnGodOffer;
+            @GodOffer.performed += instance.OnGodOffer;
+            @GodOffer.canceled += instance.OnGodOffer;
+            @AcceptOffer.started += instance.OnAcceptOffer;
+            @AcceptOffer.performed += instance.OnAcceptOffer;
+            @AcceptOffer.canceled += instance.OnAcceptOffer;
+            @RejectOffer.started += instance.OnRejectOffer;
+            @RejectOffer.performed += instance.OnRejectOffer;
+            @RejectOffer.canceled += instance.OnRejectOffer;
         }
 
         /// <summary>
@@ -927,6 +1014,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Plant.started -= instance.OnPlant;
             @Plant.performed -= instance.OnPlant;
             @Plant.canceled -= instance.OnPlant;
+            @GodOffer.started -= instance.OnGodOffer;
+            @GodOffer.performed -= instance.OnGodOffer;
+            @GodOffer.canceled -= instance.OnGodOffer;
+            @AcceptOffer.started -= instance.OnAcceptOffer;
+            @AcceptOffer.performed -= instance.OnAcceptOffer;
+            @AcceptOffer.canceled -= instance.OnAcceptOffer;
+            @RejectOffer.started -= instance.OnRejectOffer;
+            @RejectOffer.performed -= instance.OnRejectOffer;
+            @RejectOffer.canceled -= instance.OnRejectOffer;
         }
 
         /// <summary>
@@ -1241,6 +1337,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlant(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GodOffer" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGodOffer(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AcceptOffer" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAcceptOffer(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RejectOffer" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRejectOffer(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
