@@ -5,6 +5,7 @@ namespace Script.Field
 {
     public class FieldObject : MonoBehaviour
     {
+        
         public enum FieldStateEnum
         {
             EMPTY = 0,
@@ -14,8 +15,12 @@ namespace Script.Field
         FieldStateEnum state = FieldStateEnum.EMPTY;
         [SerializeField] Sprite empty_sprite,planted_sprite,ripe_sprite;
         private SpriteRenderer this_sprite_render;
-        [SerializeField] float wait_co_hat_2_chin_time_sec = 30;
-        
+        [SerializeField] float wait_planted_2_ripe_time_sec = 30;
+
+        public FieldStateEnum GetState()
+        {
+            return state;
+        }
         public void SetState(FieldStateEnum newState)
         {
             state = newState;
@@ -41,7 +46,7 @@ namespace Script.Field
         
         async void onCoHat()
         {
-            await Task.Delay((int)(wait_co_hat_2_chin_time_sec * 1000));
+            await Task.Delay((int)(wait_planted_2_ripe_time_sec * 1000));
             SetState(FieldStateEnum.Ripe);
         }
         public void Update()

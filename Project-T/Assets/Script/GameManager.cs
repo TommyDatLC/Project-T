@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
        inputHandler = new InputSystem_Actions();
        inputHandler.Enable();
        inputHandler.Player.Enable();
+       inputHandler.Player.Plant.Enable();
        inputHandler.Player.Plant.performed += OnInputPlanted;
    }
 
    private void OnInputPlanted(InputAction.CallbackContext ctx)
    {
-       
        player.Plant();
+       player.harvest();
    }
 
   
