@@ -596,6 +596,7 @@ GameObject:
   - component: {fileID: 1231468684}
   - component: {fileID: 1231468683}
   - component: {fileID: 1231468685}
+  - component: {fileID: 1231468686}
   m_Layer: 3
   m_Name: Plant
   m_TagString: Untagged
@@ -723,6 +724,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1231468686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231468682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584dbc2f420d41ce99b1f0ec76fe2f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Script.Field.FieldObject
+  empty_sprite: {fileID: -6321871764102664542, guid: 48e14144016a7934b8759183439887b0, type: 3}
+  planted_sprite: {fileID: -7173138641501777043, guid: 830a12c54560f2d4c8cfa6c6308cac9e, type: 3}
+  ripe_sprite: {fileID: 532271377969089861, guid: cf4baed975bf4c242b2b0b80a37c3906, type: 3}
+  wait_co_hat_2_chin_time_sec: 30
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
