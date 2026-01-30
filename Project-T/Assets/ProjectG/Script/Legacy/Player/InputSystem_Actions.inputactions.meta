@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc791e1132ff4daf869b1f2220c412d9
+guid: 2bcd2660ca9b64942af0de543d8d7100
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: ProjectG.Script.Player
+  wrapperCodeNamespace: 

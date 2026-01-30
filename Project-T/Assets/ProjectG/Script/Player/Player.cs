@@ -1,58 +1,100 @@
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Script;
-using Script.Field;
-using Script.God;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+namespace ProjectG.Script.Player
+{
+
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public int seed,product,money;
-    [SerializeField] public int seed_inc, product_inc;
-    [SerializeField] private float speed;
-    [SerializeField] private float field_interaction_radius = 5.0f;
-    public Action<List<(string, Action<Player>)>> onMeetInteraction;
- 
+    [Header("Movement Settings")]
+    [SerializeField] private float move_speed = 10.0f;
+    [SerializeField] private float return_threshold = 1.5f;
 
-    Interactable CheckNearbyFieldInteractable()
+    [Header("Visuals")]
+    [SerializeField] private Sprite default_sprite;
+    [SerializeField] private Sprite carrying_sprite;
+
+    // State Logic
+    private bool is_active = false;
+    private bool is_carrying = false;
+    private bool is_locked = false;
+
+    // Internal References
+    private SpriteRenderer sprite_renderer;
+    private GameManager game_manager;
+    private Transform target_slot;
+
+    private void Awake()
     {
-        Vector2 detectionCenter = transform.position;
-        // Returns an array of ALL colliders within the circle
-        Collider2D hitColliders = Physics2D.OverlapCircle(detectionCenter, field_interaction_radius,interactable_layer_mask);
-        if (hitColliders == null) return null;
-        Interactable interactableObj = hitColliders.GetComponent<Interactable>();
-        return interactableObj; 
-    }
-    public void Move(Vector2 move_value)
-    {
-        transform.position = transform.position + new Vector3(-move_value.x,move_value.y,0)  * speed * Time.deltaTime;
+        sprite_renderer = GetComponent<SpriteRenderer>();
     }
 
-    private Interactable oldInteractable;
-    void meetInteractable()
+    public void SetupPlayer(GameManager manager, Transform slot)
     {
-        // When player near interatable object
-        Interactable i = CheckNearbyFieldInteractable();
-        if (i == oldInteractable)
-            return;
-        onMeetInteraction?.Invoke(i ==null ? null : i.GetList());
-        oldInteractable = i;
+        game_manager = manager;
+        target_slot = slot;
+        sprite_renderer.sprite = default_sprite;
     }
+
+    public void SetActiveState(bool state)
+    {
+        is_active = state;
+    }
+
+    public void MovePlayer(Vector2 move_value)
+    {
+        if (!is_active || is_locked) return;
+
+        // Applying your specific inverted-X movement logic
+        Vector3 movement = new Vector3(-move_value.x, move_value.y, 0);
+        transform.position += movement * move_speed * Time.deltaTime;
+
+        // Check if player returned to spawn (center) while carrying an item
+        if (is_carrying && Vector2.Distance(transform.position, Vector2.zero) < return_threshold)
+        {
+            lock_to_face();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!is_active || is_locked || is_carrying) return;
+
+        // Check if the collided object has the Item script
+        Item.Item item = other.GetComponent<Item.Item>();
+        if (item != null)
+        {
+            PickUpItem(item);
+        }
+    }
+
+    private void PickUpItem(Item.Item item)
+    {
+        is_carrying = true;
+        sprite_renderer.sprite = carrying_sprite;
+        
+        // Notify Manager to toggle indicator for this player
+        game_manager.OnItemPickedUp();
+        
+        Destroy(item.gameObject);
+    }
+
+    private void lock_to_face()
+    {
+        is_locked = true;
+        is_active = false;
+        
+        // Snap to the specific slot (Eye/Nose/Mouth)
+        transform.position = target_slot.position;
+        
+        // Notify Manager that turn is finished
+        game_manager.OnItemPickedUp();
+    }
+
     public void Interact(InputAction.CallbackContext ctx)
     {
-        
+        // Placeholder for any specific interaction logic if needed later
     }
-    void Start()
-    {
-        MessageBox.Show("Vua");
-    }
-    [SerializeField] LayerMask interactable_layer_mask;
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        meetInteractable();
-    }
+}
 }
