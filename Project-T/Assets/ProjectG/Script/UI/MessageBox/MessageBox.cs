@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+[RequireComponent(typeof(UIDocument))]
 public class MessageBox : MonoBehaviour
 {
     // Singleton để gọi static
     private static MessageBox _instance;
 
-    [Header("UI Document")]
-    [SerializeField] private UIDocument _uiDoc;
+ 
+    private UIDocument _uiDoc;
 
     // Các phần tử UI
     private VisualElement _root;

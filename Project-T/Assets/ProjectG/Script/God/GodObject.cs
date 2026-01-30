@@ -11,8 +11,9 @@ namespace Script.God
        [SerializeField]  List<int> productOfferRandomList = new List<int>();
         public int moneyForSucessful;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             AddInteraction("Offer",Offer);
         }
 

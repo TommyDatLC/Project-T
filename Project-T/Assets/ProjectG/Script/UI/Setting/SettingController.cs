@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class SettingsController : MonoBehaviour
 {
+    public static SettingsController instance = null;
     private UIDocument _doc;
     private VisualElement _root;
     
@@ -13,6 +14,19 @@ public class SettingsController : MonoBehaviour
     private Button _closeBtn;
     private VisualElement _overlay;
 
+    void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     private void OnEnable()
     {
         _doc = GetComponent<UIDocument>();
@@ -120,7 +134,7 @@ public class SettingsController : MonoBehaviour
     }
 
     [ContextMenu("DisplaySetting")]
-    void DisplaySetting()
+    public void DisplaySetting()
     {
         _overlay.style.display = DisplayStyle.Flex;
     }

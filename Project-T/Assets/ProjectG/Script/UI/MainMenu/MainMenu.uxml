@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProjectG/Script/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=58b0e01ebc124de8b3d7eb876de9c8b3&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="main-container" class="main-container">
+        <ui:Label text="MY SUPER GAME" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/TitanOne-Regular.ttf?fileID=12800000&amp;guid=95ac7497b650e604c84380eb61af0634&amp;type=3#TitanOne-Regular&quot;); -unity-font-style: normal;"/>
+        <ui:VisualElement class="menu-buttons">
+            <ui:Button name="btn-play" text="PLAY GAME" class="menu-btn"/>
+            <ui:Button name="btn-settings" text="SETTINGS" class="menu-btn"/>
+            <ui:Button name="btn-quit" text="QUIT" class="menu-btn btn-quit"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -14,7 +14,7 @@ namespace Script.Field
         }
         FieldStateEnum state = FieldStateEnum.EMPTY;
         [SerializeField] Sprite empty_sprite,planted_sprite,ripe_sprite;
-        private SpriteRenderer this_sprite_render;
+     
         [SerializeField] float wait_planted_2_ripe_time_sec = 30;
 
         public FieldStateEnum GetState()
@@ -27,14 +27,14 @@ namespace Script.Field
             switch (state)
             {
                 case FieldStateEnum.EMPTY:
-                    this_sprite_render.sprite = empty_sprite;
+                    ChangeSpriteWithAnimation(empty_sprite);
                     break;
                 case FieldStateEnum.Planted:
-                    this_sprite_render.sprite = planted_sprite;
+                    ChangeSpriteWithAnimation(planted_sprite);
                     onPlant();
                     break;
                 case FieldStateEnum.Ripe:
-                    this_sprite_render.sprite = ripe_sprite;
+                    ChangeSpriteWithAnimation(ripe_sprite);
                     onRipe();
                     break;
             }
@@ -51,12 +51,7 @@ namespace Script.Field
             await Task.Delay((int)(wait_planted_2_ripe_time_sec * 1000));
             SetState(FieldStateEnum.Ripe);
         }
-        void Start()
-        {
-            this_sprite_render = GetComponent<SpriteRenderer>();
-            // add to the interactor function
-            AddInteraction("Plant",Plant);
-        }
+ 
         
     
         public void Plant(Player player)
@@ -94,5 +89,11 @@ namespace Script.Field
             Plant(p);
             Harvest(p);
         }
+        protected override void Start()
+        {
+            base.Start();
+            AddInteraction("Plant",Plant);
+        }
+
     }
 }
