@@ -43,7 +43,7 @@ public class MainMenuController : MonoBehaviour
     {
         // Load Scene GamePlay
         Debug.Log("Loading GamePlay Scene...");
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene("Experiment");
     }
 
     private void OnSettingsClicked()

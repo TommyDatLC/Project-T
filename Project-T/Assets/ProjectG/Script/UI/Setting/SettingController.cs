@@ -37,6 +37,7 @@ public class SettingsController : MonoBehaviour
         _saveBtn = _root.Q<Button>("save-btn");
         _closeBtn = _root.Q<Button>("close-btn");
         _overlay = _root.Q<VisualElement>("overlay");
+        _overlay.style.display = DisplayStyle.None;
 
         _saveBtn.clicked += OnSaveClicked;
         _closeBtn.clicked += OnCloseClicked;

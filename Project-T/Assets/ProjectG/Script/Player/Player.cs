@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace ProjectG.Script.Player
-{
 
 
 public class Player : MonoBehaviour
@@ -62,14 +60,14 @@ public class Player : MonoBehaviour
         if (!is_active || is_locked || is_carrying) return;
 
         // Check if the collided object has the Item script
-        Item.Item item = other.GetComponent<Item.Item>();
+        Item item = other.GetComponent<Item>();
         if (item != null)
         {
             PickUpItem(item);
         }
     }
 
-    private void PickUpItem(Item.Item item)
+    private void PickUpItem(Item item)
     {
         is_carrying = true;
         sprite_renderer.sprite = carrying_sprite;
@@ -96,5 +94,4 @@ public class Player : MonoBehaviour
     {
         // Placeholder for any specific interaction logic if needed later
     }
-}
 }
