@@ -1,0 +1,78 @@
+/* 1. Lớp phủ mờ màn hình */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out; /* Fade in/out cho nền */
+}
+
+/* Class để hiện Overlay */
+.overlay--show {
+    opacity: 1;
+}
+
+/* 2. Hộp thoại chính */
+.msg-box {
+    width: 400px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    /* ANIMATION SETUP */
+    scale: 0.5 0.5; /* Bắt đầu nhỏ */
+    transition: scale 0.3s ease-out-back; /* Hiệu ứng nảy nhẹ khi hiện */
+}
+
+/* Class để kích hoạt Animation mở hộp thoại */
+.msg-box--show {
+    scale: 1 1; /* Phóng to về kích thước gốc */
+}
+
+/* 3. Nút X (Góc trên phải) */
+.btn-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%; /* Hình tròn */
+    border-width: 0;
+    -unity-font-style: bold;
+}
+
+.btn-close:hover {
+    background-color: #c0392b;
+}
+
+/* 4. Nội dung text */
+.msg-content {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    white-space: normal; /* Tự xuống dòng */
+    -unity-text-align: middle-center;
+    color: #333;
+}
+
+/* 5. Nút OK */
+.btn-ok {
+    width: 120px;
+    height: 40px;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    border-width: 0;
+}
+
+.btn-ok:hover {
+    background-color: #27ae60;
+}

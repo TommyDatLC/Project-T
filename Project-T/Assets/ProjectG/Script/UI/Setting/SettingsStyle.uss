@@ -1,0 +1,172 @@
+/* --- GIỮ NGUYÊN CÁC PHẦN TRÊN --- */
+
+/* Container bao phủ toàn màn hình làm mờ nền */
+.overlay {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Thêm transition nhẹ cho việc ẩn hiện overlay nếu muốn mượt mà hơn */
+    transition-property: opacity, display;
+    transition-duration: 0.3s;
+}
+
+/* Panel chính */
+.panel {
+    width: 400px;
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 25px;
+    border-width: 2px;
+    border-color: #444;
+}
+
+/* Tiêu đề */
+.header-text {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+/* Các hàng setting */
+.setting-row {
+    margin-bottom: 15px;
+    color: #eeeeee;
+    font-size: 16px;
+}
+
+.setting-row > .unity-label {
+    min-width: 120px;
+}
+
+/* Footer chứa nút bấm */
+.footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* --- PHẦN NÚT BẤM ĐƯỢC CẬP NHẬT MỚI Ở ĐÂY --- */
+
+/* Style chung cho nút (Trạng thái bình thường) */
+.btn {
+    width: 45%;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    -unity-font-style: bold;
+
+    /* YÊU CẦU MỚI: Thêm viền 2px */
+    border-width: 2px;
+
+    /* YÊU CẦU MỚI: Thiết lập Animation chuyển đổi */
+    /* Chúng ta sẽ làm mượt màu nền, màu chữ và màu viền */
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.25s; /* Thời gian 1 giây như yêu cầu */
+    transition-timing-function: ease-in-out; /* Hiệu ứng vào ra mượt mà */
+}
+
+/* Nút Lưu (Primary) - Trạng thái thường */
+.btn-primary {
+    background-color: #2ecc71;
+    color: #fff;
+    border-color: #2ecc71; /* Viền ban đầu cùng màu nền */
+}
+
+/* Nút Lưu (Primary) - Trạng thái HOVER */
+.btn-primary:hover {
+    background-color: #ffffff; /* Nền chuyển sang trắng */
+    color: #2ecc71; /* Chữ chuyển sang màu xanh lá để dễ đọc trên nền trắng */
+    border-color: #2ecc71; /* Viền giữ màu xanh lá */
+    /* Không cần set duration ở đây, nó dùng setting ở class .btn gốc */
+}
+
+/* Nút Đóng (Secondary) - Trạng thái thường */
+.btn-secondary {
+    background-color: #e74c3c;
+    color: #fff;
+    border-color: #e74c3c; /* Viền ban đầu cùng màu nền */
+}
+
+/* Nút Đóng (Secondary) - Trạng thái HOVER */
+.btn-secondary:hover {
+    background-color: #ffffff; /* Nền chuyển sang trắng */
+    color: #e74c3c; /* Chữ chuyển sang màu đỏ */
+    border-color: #e74c3c; /* Viền giữ màu đỏ */
+}
+
+
+/* --- PHẦN MỚI: TÙY CHỈNH SLIDER VÀ CHECKBOX --- */
+
+/* 1. Bo tròn thanh ngang của Slider (Tracker) */
+.unity-base-slider__tracker {
+    border-radius: 4px;     /* Bo tròn 2 đầu thanh */
+    height: 6px;             /* Làm thanh mảnh hơn một chút cho đẹp */
+    background-color: #555;  /* Màu nền của thanh */
+}
+
+/* 2. Biến nút kéo (Dragger/Knob) thành hình tròn */
+.unity-base-slider__dragger {
+    width: 20px;             /* Chiều rộng */
+    height: 20px;            /* Chiều cao */
+    border-radius: 50%;      /* 50% sẽ biến hình vuông thành hình tròn */
+    background-color: #ffffff;
+    border-width: 0;         /* Xóa viền mặc định */
+    margin-top: -7px;        /* Căn chỉnh lại vị trí lên trên để nằm giữa thanh */
+    transition-property: scale, color, border-color;
+    transition-duration: 0.25s; /* Thời gian 1 giây như yêu cầu */
+    transition-timing-function: ease-in-out;
+}
+
+/* Hiệu ứng khi di chuột vào nút kéo */
+.unity-base-slider__dragger:hover {
+    background-color: #dddddd;
+    scale: 1.5;             /* Phóng to nhẹ lên 1.1 lần */
+}
+
+/* 3. Bo tròn ô Checkbox (Toggle) */
+.unity-toggle__checkmark {
+    border-radius: 6px;      /* Bo góc vuông thành hơi tròn */
+    border-width: 2px;
+    background-color: #2b2b2b;
+    transition-property: scale, color, border-color;
+    transition-duration: 0.25s; /* Thời gian 1 giây như yêu cầu */
+    transition-timing-function: ease-in-out;
+}
+
+/* Đổi màu ô Checkbox khi được tích chọn */
+.unity-toggle:checked > .unity-toggle__input > .unity-toggle__checkmark {
+    background-color: #2ecc71; /* Màu xanh khi bật */
+    border-color: #2ecc71;
+    
+    /* Icon dấu tích bên trong sẽ tự hiện */
+}
+
+/* --- Style riêng cho Dropdown Resolution --- */
+
+/* Phần khung hiển thị lựa chọn chính */
+.unity-base-popup-field__input {
+    background-color: #3d3d3d; /* Nền màu đen */
+    border-color: #ffffff;     /* Viền màu trắng */
+    border-width: 2px;         /* Độ dày viền 5px */
+    border-radius: 4px;        /* Bo tròn góc 4px */
+    padding: 4px 8px;          /* Thêm chút đệm để chữ không sát viền quá */
+}
+
+/* Đảm bảo màu chữ bên trong là màu trắng để dễ đọc trên nền đen */
+.unity-base-popup-field__text {
+    color: #ffffff;
+}
+
+/* Đảm bảo mũi tên xổ xuống cũng là màu trắng */
+.unity-base-popup-field__arrow {
+    -unity-background-image-tint-color: #ffffff;
+}
+
+/* (Tùy chọn) Hiệu ứng khi di chuột vào để người dùng dễ nhận biết */
+.unity-base-popup-field__input:hover {
+    background-color: #333333; /* Đổi sang màu xám đậm hơn chút khi hover */
+}

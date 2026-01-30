@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProjectG/Script/UI/InGame/InteractionStyle.uss?fileID=7433441132597879392&amp;guid=7712cda2e02f41d4b3b3321066367fc9&amp;type=3#InteractionStyle"/>
+    <ui:VisualElement name="interaction-list" class="interaction-container" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/GoogleSans-Regular.ttf?fileID=12800000&amp;guid=214be7ba0ddf7ae408f06da1a5fe60aa&amp;type=3#GoogleSans-Regular&quot;);"/>
+</ui:UXML>
