@@ -818,7 +818,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6321871764102664542, guid: 48e14144016a7934b8759183439887b0, type: 3}
+  m_Sprite: {fileID: 532271377969089861, guid: cf4baed975bf4c242b2b0b80a37c3906, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -881,7 +881,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 6}
+    oldSize: {x: 12, y: 12}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -901,10 +901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584dbc2f420d41ce99b1f0ec76fe2f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script.Field.FieldObject
+  animLength: 0.5
   empty_sprite: {fileID: -6321871764102664542, guid: 48e14144016a7934b8759183439887b0, type: 3}
   planted_sprite: {fileID: -7173138641501777043, guid: 830a12c54560f2d4c8cfa6c6308cac9e, type: 3}
   ripe_sprite: {fileID: 532271377969089861, guid: cf4baed975bf4c242b2b0b80a37c3906, type: 3}
-  wait_planted_2_ripe_time_sec: 3
+  wait_planted_2_ripe_time_sec: 30
 --- !u!1 &1326416923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e56108c80f54ec19c2da3e7056548b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script.God.GodObject
+  animLength: 0.5
   productOfferRandomList: 030000000200000001000000
   moneyForSucessful: 100
 --- !u!61 &1580320075
