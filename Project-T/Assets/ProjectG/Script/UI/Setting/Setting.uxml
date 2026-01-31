@@ -2,14 +2,14 @@
     <Style src="project://database/Assets/ProjectG/Script/UI/Setting/SettingsStyle.uss?fileID=7433441132597879392&amp;guid=063269be984046cf98f1ed7461ce18ec&amp;type=3#SettingsStyle"/>
     <ui:VisualElement name="overlay" class="overlay" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/GoogleSans-Regular.ttf?fileID=12800000&amp;guid=214be7ba0ddf7ae408f06da1a5fe60aa&amp;type=3#GoogleSans-Regular&quot;);">
         <ui:VisualElement name="settings-panel" class="panel">
-            <ui:Label text="GAME SETTINGS" class="header-text" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/TitanOne-Regular.ttf?fileID=12800000&amp;guid=95ac7497b650e604c84380eb61af0634&amp;type=3#TitanOne-Regular&quot;); -unity-font-style: normal;"/>
+            <ui:Label text="GAME SETTINGS" class="header-text" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); -unity-font-style: normal;"/>
             <ui:VisualElement class="content-container">
-                <ui:Slider label="Music Volume" name="music-slider" low-value="0" high-value="100" value="50" class="setting-row"/>
-                <ui:DropdownField label="Resolution" name="resolution-dropdown" choices="Max (Native),FullHD (1920x1080),HD (720p)" index="0" class="setting-row"/>
+                <ui:Slider label="Music Volume" name="music-slider" low-value="0" high-value="100" value="50" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
+                <ui:DropdownField label="Resolution" name="resolution-dropdown" choices="Max (Native),FullHD (1920x1080),HD (720p)" index="0" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
             </ui:VisualElement>
             <ui:VisualElement class="footer-container">
-                <GameButton icon-image="" text="Close&#10;" name="close-btn" class="btn btn-secondary"/>
-                <GameButton icon-image="" text="Save Changes" name="save-btn" class="btn btn-primary"/>
+                <GameButton icon-image="" text="Close&#10;" name="close-btn" class="btn btn-secondary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); font-size: 20px;"/>
+                <GameButton icon-image="" text="Save Changes" name="save-btn" class="btn btn-primary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); font-size: 20px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
