@@ -2,9 +2,9 @@
     <Style src="project://database/Assets/ProjectG/Script/UI/MessageBox/MessageBoxStyle.uss?fileID=7433441132597879392&amp;guid=d0838bf5952f46728d1eb524f4cab3bd&amp;type=3#MessageBoxStyle"/>
     <ui:VisualElement name="msg-overlay" class="overlay" style="display: none;">
         <ui:VisualElement name="msg-box" class="msg-box">
-            <ui:Button name="btn-close" text="X" class="btn-close"/>
-            <ui:Label name="lbl-content" text="Nội dung thông báo ở đây..." class="msg-content"/>
-            <ui:Button name="btn-ok" text="OK" class="btn-ok"/>
+            <ui:Button name="btn-close" text="X" class="btn-close" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
+            <ui:Label name="lbl-content" text="Nội dung thông báo ở đây..." class="msg-content" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
+            <ui:Button name="btn-ok" text="OK" class="btn-ok" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

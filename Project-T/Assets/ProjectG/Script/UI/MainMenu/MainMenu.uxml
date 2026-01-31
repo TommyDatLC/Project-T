@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/ProjectG/Script/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=58b0e01ebc124de8b3d7eb876de9c8b3&amp;type=3#MainMenuStyle"/>
     <ui:VisualElement name="main-container" class="main-container">
-        <ui:Label text="MY SUPER GAME" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/TitanOne-Regular.ttf?fileID=12800000&amp;guid=95ac7497b650e604c84380eb61af0634&amp;type=3#TitanOne-Regular&quot;); -unity-font-style: normal;"/>
+        <ui:Label text="mask the raid" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/doublebass.rial-bold.ttf?fileID=12800000&amp;guid=cfab19dfd3a69064e8e8291d11ecd9ae&amp;type=3#doublebass.rial-bold&quot;); -unity-font-style: normal; color: rgb(0, 171, 14);"/>
         <ui:VisualElement class="menu-buttons">
-            <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn"/>
-            <GameButton icon-image="" name="btn-settings" text="SETTINGS" class="menu-btn"/>
-            <GameButton icon-image="" name="btn-quit" text="QUIT" class="menu-btn"/>
+            <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
+            <GameButton icon-image="" name="btn-settings" text="SETTINGS" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
+            <GameButton icon-image="" name="btn-quit" text="QUIT" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
