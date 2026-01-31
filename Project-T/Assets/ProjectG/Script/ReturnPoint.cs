@@ -12,6 +12,7 @@ namespace Script
             if (player == null || p != player)
                 return;
             player.StopTime();
+            player.transform.position = transform.position;
         }
 
         public void Init(Player player)
