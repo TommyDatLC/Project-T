@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ProjectG.Script.UI.InGame.Overlay;
 using Script;
+using Script.EndGame;
 using Script.Item;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
    public CircleDrawer circle_drawer;
    public CinemachineCamera virtual_camera;
    public OverlayController overlay_controller;
+   
+   public bool fulfilledFamilyCondition = false;
+   private bool isEnding = false;
    
    
    void Start()
@@ -89,14 +93,56 @@ public class GameManager : MonoBehaviour
    {
        overlay_controller.Show($"Draw phase",2);
        await Task.Delay(2000);
+
+       circle_drawer.onStopDrawing -= HandleEndGame;
+       circle_drawer.onStopDrawing += HandleEndGame;
+       
        circle_drawer.gameObject.SetActive(true);
        virtual_camera.Target.TrackingTarget = null;
    }
    private void OnDestroy()
    {
+       // Clean up events
+       if (circle_drawer != null)
+       {
+           circle_drawer.onStopDrawing -= HandleEndGame;
+       }
+
+       // Clean up Input System
+       if (inputHandler != null)
+       {
+           inputHandler.Player.Disable();
+           inputHandler.Dispose();
+       }
+
        instance = null;
    }
 
+   public void HandleEndGame(float score)
+   {
+       if (isEnding) return;
+       isEnding = true;
+
+       // 1. Freeze and Cleanup
+       circle_drawer.onStopDrawing -= HandleEndGame;
+       circle_drawer.enabled = false;
+       circle_drawer.gameObject.SetActive(false); 
+       inputHandler?.Disable();
+       this.enabled = false;
+
+       // 2. Store data in the STATIC class (This survives the scene change)
+       Player p = GetCurrentPlayer();
+       float timeSpent = p != null ? p.getCurrentTime() : 0f;
+    
+       EndGameData.FinalScore = score;
+       EndGameData.FinalTime = timeSpent;
+       // Perform the evaluation here
+       EndGameData.Result = EndgameEvaluator.EvaluateGame(score, timeSpent, 120f, fulfilledFamilyCondition);
+
+       // 3. Capture and Go
+       // Make sure "EndGame" matches the name in your Build Settings exactly
+       GetComponent<ScreenCaptureManager>().CaptureAndTransition("EndGame");
+   }
 
    // private void OnEnable()
     // {

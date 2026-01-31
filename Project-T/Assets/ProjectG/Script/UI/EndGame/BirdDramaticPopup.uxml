@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: 100%;">
+        <ui:VisualElement name="BirdSquare" style="width: 400px; height: 400px; background-color: rgb(255, 255, 255); border-radius: 20px; border-width: 10px; border-color: rgb(0, 0, 0);">
+            <ui:Label text="[DRAMATIC BIRD IMAGE]" style="margin-top: auto; margin-bottom: auto; -unity-text-align: middle-center; color: black; font-size: 30px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

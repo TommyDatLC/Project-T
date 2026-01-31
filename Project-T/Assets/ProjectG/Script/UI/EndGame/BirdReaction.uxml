@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; justify-content: flex-end; padding-bottom: 100px; width: 100%; height: 100%;">
+        <ui:VisualElement name="SpeechBubble" style="background-color: white; padding: 20px; border-radius: 15px; border-width: 5px; border-color: black; min-width: 400px;">
+            <ui:Label name="ReactionText" text="..." style="color: black; font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
