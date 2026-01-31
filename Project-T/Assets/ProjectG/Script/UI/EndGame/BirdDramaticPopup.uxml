@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="BirdContainer" style="flex-grow: 1; justify-content: center; align-items: center;">
+        <ui:VisualElement name="BirdSquare" style="width: 200px; height: 200px; background-color: rgb(255, 255, 255); border-width: 5px; border-color: rgb(0, 0, 0); position: absolute; left: -300px; top: -300px;" />
+    </ui:VisualElement>
+</ui:UXML>
