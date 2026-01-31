@@ -5,24 +5,32 @@ using UnityEngine;
 
 namespace Script
 {
-    public abstract class Interactable : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public abstract class InteractableObject : MonoBehaviour
     {
         [Header("Interactable setting")]
         List<(string action_name,Action<Player> action)> interactions = new List<(string,Action<Player>)>();
         SpriteRenderer sprite_renderer;
-        
-
+        public Action OnInteractionChange;
         public void Interact(int actionID,Player p)
         {
             interactions[actionID].action?.Invoke(p);
+            
         }
         protected void AddInteraction(string action_name,Action<Player> action)
         {
             interactions.Add((action_name,action));
+            OnInteractionChange?.Invoke();
         }
         protected void EditInteraction(int id,string action_name,Action<Player> action)
         {
             interactions[id] = ((action_name,action));
+            OnInteractionChange?.Invoke();
+        }
+        protected void DeleteInteraction(int id)
+        {
+            interactions.RemoveAt(id);
+            OnInteractionChange?.Invoke();
         }
         [SerializeField] private float animLength = 0.5f;
         public List<(string action_name,Action<Player> action)> GetList()
@@ -40,6 +48,7 @@ namespace Script
         protected virtual void Start()
         {
             sprite_renderer = GetComponent<SpriteRenderer>();
+            gameObject.layer = LayerMask.NameToLayer("Interactable");
         }
     }
 }

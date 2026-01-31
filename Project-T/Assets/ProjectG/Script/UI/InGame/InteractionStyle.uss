@@ -1,39 +1,81 @@
+/* --- CONTAINER TỔNG --- */
 .interaction-container {
     position: absolute;
-    visibility: hidden;
-    align-items: flex-start;
-    padding: 5px;
+    padding: 10px;
+    background-color: transparent;
 }
 
+/* --- CONTAINER A (HÀNG TƯƠNG TÁC) --- */
+.interaction-item {
+    flex-direction: row;        /* Xếp chữ F và Nút nằm ngang */
+    align-items: center;        /* Căn giữa theo chiều dọc */
+    margin-bottom: 8px;
+    background-color: transparent;
+}
+
+/* --- ICON CHỮ F (BÊN TRÁI) --- */
+.focus-indicator {
+    width: 32px;
+    height: 32px;
+    background-color: #f1c40f;   /* Màu vàng */
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+
+    /* TRẠNG THÁI MẶC ĐỊNH: ẨN */
+    display: none;               /* Dùng display để không chiếm diện tích khi ẩn */
+    opacity: 0;
+    scale: 0.8;
+    transition-property: opacity, scale;
+    transition-duration: 0.1s;
+}
+
+.focus-indicator Label {
+    color: #000;
+    -unity-font-style: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- LOGIC HIỂN THỊ: Quan trọng nhất --- 
+   Khi Nút bấm bên trong Container A được focus, chữ F sẽ hiện lên */
+.interaction-item:focus-within .focus-indicator {
+    display: flex;              /* Hiện lên */
+    opacity: 1;
+    scale: 1;
+}
+
+/* --- NÚT TƯƠNG TÁC (BÊN PHẢI) --- */
 .interaction-btn {
-    flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 5px;
-    padding: 8px 16px;
-    min-width: 150px;
-    transition-duration: 0.2s;
-    color: white;
+    flex-grow: 1;
+    min-width: 180px;
+    padding: 12px 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
     font-size: 16px;
     -unity-text-align: middle-left;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.3);
+    transition-property: background-color, border-color, scale, color;
+    transition-duration: 0.2s;
 }
 
-.interaction-btn:hover {
+/* Trạng thái Hover/Focus của nút */
+.interaction-btn:hover,
+.interaction-btn:focus {
     background-color: rgba(255, 255, 255, 0.9);
-    color: rgb(0, 0, 0);
-    scale: 1.05;
-    border-color: rgb(255, 255, 255);
+    color: #000;
+    border-color: #ffffff;
+    outline-width: 0;
 }
 
-.btn-icon {
-    width: 24px;
-    height: 24px;
-    background-color: rgb(52, 152, 219);
-    border-radius: 50%;
-    margin-right: 10px;
-    -unity-text-align: middle-center;
-    font-size: 14px;
-    color: white;
+/* Trạng thái Click (Active) */
+.interaction-btn:active,
+.interaction-btn.button--active-pseudo {
+    background-color: #f1c40f;
+    color: #000;
+    scale: 0.95;
 }

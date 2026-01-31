@@ -1,87 +1,132 @@
 using System;
 using System.Collections.Generic;
+using System.Linq; // Để dùng Last(), First()
 using UnityEngine;
 using UnityEngine.UIElements;
-using Script; // Namespace chứa class Interactable của bạn
+using Script;
 
 public class InteractionUIController : MonoBehaviour
 {
-
     UIDocument uiDocument;
-    Player playerContext; // Tham chiếu tới Player hiện tại để thực hiện Action
-   
+    Player playerContext;
+
     private VisualElement _container;
     private VisualElement _root;
+    private List<Button> _currentButtons = new List<Button>();
 
     void Start()
     {
         if (uiDocument == null) uiDocument = GetComponent<UIDocument>();
         _root = uiDocument.rootVisualElement;
-        playerContext = GameManager.instance.player;
-        playerContext.onMeetInteraction += RenderButtonInteraction;
-        // Lấy container từ UXML
-        _container = _root.Q<VisualElement>("interaction-list");
-    }
-    private void OnEnable()
-    {
+        playerContext = GameManager.instance.GetCurrentPlayer();
+        playerContext.onMeetInteraction = RenderButtonInteraction;
+        GameManager.instance.OnChangePlayer += () =>
+        {
+            Debug.Log("change player");
+            playerContext = GameManager.instance.GetCurrentPlayer();
+            playerContext.onMeetInteraction = RenderButtonInteraction;
+        };
         
+        
+        _container = _root.Q<VisualElement>("interaction-list");
+
+        // Đăng ký sự kiện bàn phím trên toàn bộ Root
+        _root.RegisterCallback<KeyDownEvent>(OnKeyDown);
     }
 
-    /// <summary>
-    /// Hàm Render danh sách nút dựa trên dữ liệu từ Interactable
-    /// </summary>
-    /// <param name="actions">List lấy từ Interactable.GetList()</param>
-    /// <summary>
-    /// Hàm Render danh sách nút dựa trên dữ liệu từ Interactable
-    /// </summary>
-    /// <param name="actions">List lấy từ Interactable.GetList()</param>
     public void RenderButtonInteraction(List<(string action_name, Action<Player> action)> actions)
+{
+    Debug.Log("RenderButtonInteraction");
+    if (actions == null || actions.Count == 0)
     {
-        // 1. XỬ LÝ LIST NULL: Nếu list null hoặc rỗng -> Tắt toàn bộ UI
-        if (actions == null || actions.Count == 0)
+        HideInteraction();
+        return;
+    }
+
+    if (_container != null)
+    {
+        _container.Clear();
+        _currentButtons.Clear();
+        _container.style.visibility = Visibility.Visible;
+
+        foreach (var item in actions)
         {
-            HideInteraction();
-            return;
+            // 1. Tạo Container A (Hàng ngang)
+            VisualElement itemContainer = new VisualElement();
+            itemContainer.AddToClassList("interaction-item");
+
+            // 2. Tạo Chữ F bên trái
+            VisualElement fBox = new VisualElement();
+            fBox.AddToClassList("focus-indicator");
+            fBox.Add(new Label("F"));
+
+            // 3. Tạo Nút bên phải
+            Button btn = new Button();
+            btn.text = item.action_name;
+            btn.AddToClassList("interaction-btn");
+            btn.focusable = true; // Để có thể dùng phím mũi tên
+
+            // Xử lý Action
+            if (item.action == null) {
+                btn.SetEnabled(false);
+            } else {
+                btn.clicked += () => item.action.Invoke(playerContext);
+            }
+
+            // 4. Lắp ráp: Cho F và Nút vào Container A
+            itemContainer.Add(fBox);
+            itemContainer.Add(btn);
+
+            // 5. Cho Container A vào danh sách tổng
+            _container.Add(itemContainer);
+            
+            // Lưu lại danh sách nút để điều khiển phím mũi tên
+            _currentButtons.Add(btn);
         }
 
-        // Nếu có dữ liệu, đảm bảo container được hiện lên
-        if (_container != null)
+        // Focus vào nút đầu tiên
+        if (_currentButtons.Count > 0) _currentButtons[0].Focus();
+    }
+}
+    private void OnKeyDown(KeyDownEvent evt)
+    {
+        if (_container.style.visibility == Visibility.Hidden || _currentButtons.Count == 0) return;
+
+        // Lấy nút hiện tại đang focus
+        VisualElement focusedElement = _root.focusController.focusedElement as VisualElement;
+        int currentIndex = _currentButtons.IndexOf(focusedElement as Button);
+
+        switch (evt.keyCode)
         {
-            _container.Clear(); // Xóa các nút cũ
-            _container.style.visibility = Visibility.Visible;
-           
-            // 2. DUYỆT QUA TỪNG PHẦN TỬ
-            foreach (var item in actions)
-            {
-                Button btn = new Button();
-                btn.text = item.action_name;
-                btn.AddToClassList("interaction-btn");
+            case KeyCode.DownArrow:
+                // Nếu chưa focus cái nào hoặc là cái cuối cùng -> Về cái đầu
+                // Dùng cái này nếu KHÔNG muốn xoay vòng
+                int nextIndex = Mathf.Clamp(currentIndex + 1, 0, _currentButtons.Count - 1);
+                _currentButtons[nextIndex].Focus();
+                evt.StopPropagation(); // Ngăn sự kiện truyền đi tiếp
+                break;
 
-                // --- XỬ LÝ PHẦN TỬ NULL ---
-                // Kiểm tra xem Action bên trong có null không
-                if (item.action == null)
+            case KeyCode.UpArrow:
+                // Nếu là cái đầu -> Xuống cái cuối
+                int prevIndex = Mathf.Clamp(currentIndex - 1, 0, _currentButtons.Count - 1);
+                _currentButtons[prevIndex].Focus();
+                evt.StopPropagation();
+                break;
+
+            case KeyCode.F:
+                // Nếu đang focus vào một nút hợp lệ, giả lập click nút đó
+                if (currentIndex != -1 && _currentButtons[currentIndex].enabledSelf)
                 {
-                    // Disable nút: Nút sẽ bị mờ đi và không click được
-                    btn.SetEnabled(false); 
-                    Debug.Log("Disable");
-                    // (Tùy chọn) Bạn có thể đổi text để báo hiệu, ví dụ:
-                    // btn.text = $"{item.action_name} (Locked)";
-                }
-                else
-                {
-                    // Nếu có action, bật nút và gán sự kiện click
-                    btn.SetEnabled(true);
-                    Debug.Log("Enable");
-                    btn.RegisterCallback<ClickEvent, VisualElement>((evt, args) =>
+                    // Thực hiện hành động click
+                    // UI Toolkit gọi bằng ExecuteClick
+                    using (var submitEvt = NavigationSubmitEvent.GetPooled())
                     {
-                        item.action.Invoke(playerContext);
-                        Debug.Log($"Đã chọn hành động: {item.action_name}");
-
-                    },null);
+                        submitEvt.target = _currentButtons[currentIndex];
+                        _currentButtons[currentIndex].SendEvent(submitEvt);
+                    }
+                    Debug.Log("Đã bấm phím F để tương tác");
                 }
-
-                _container.Add(btn);
-            }
+                break;
         }
     }
 
@@ -89,25 +134,11 @@ public class InteractionUIController : MonoBehaviour
     {
         if (_container != null)
         {
-            _container.Clear(); // Xóa nút để tiết kiệm bộ nhớ UI
+            _container.Clear();
+            _currentButtons.Clear();
             _container.style.visibility = Visibility.Hidden;
         }
     }
 
-    // Hàm phụ trợ: Di chuyển UI đến vị trí của vật thể (World to Screen)
-    // Gọi hàm này trong Update nếu bạn muốn menu bay trên đầu nhân vật
-    public void MoveMenuToWorldPosition(Vector3 worldPos, Camera mainCamera)
-    {
-        if (_container.style.visibility == Visibility.Hidden) return;
-
-        Vector2 screenPos = RuntimePanelUtils.CameraTransformWorldToPanel(
-            _container.panel, 
-            worldPos, 
-            mainCamera
-        );
-
-        // Cập nhật vị trí (Offset sang phải một chút cho đẹp)
-        _container.style.left = screenPos.x + 50; 
-        _container.style.top = screenPos.y - 50;
-    }
+    // Giữ nguyên hàm MoveMenuToWorldPosition của bạn...
 }
