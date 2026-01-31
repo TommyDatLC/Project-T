@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e4c76e66924b6e8157b9ddbf3bc430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script.ReturnPoint
-  isNose: 0
+  isNose: 1
 --- !u!61 &1304133237
 BoxCollider2D:
   m_ObjectHideFlags: 0

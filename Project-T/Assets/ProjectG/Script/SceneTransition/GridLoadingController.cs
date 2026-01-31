@@ -34,7 +34,7 @@ public class GridLoadingController : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         gameObject.SetActive(false);

@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
         // 3. Xử lý lật mặt (Flip)
         if (moveX > 0) 
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (moveX < 0) 
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
     public float getCurrentTime()
     {
-        if (!is_Counter_Started)
+        if (!is_Counter_Started)    
             return -1; 
         return Time.time - start_runtime_counting;
     }
@@ -217,10 +217,10 @@ public class Player : MonoBehaviour
             // Sau khi mờ hẳn thì disable GameObject hoặc Component
          
             // Hoặc spriteRenderer.enabled = false;
-        }
+            public void sendFamilyToGM()
+            {
+                gameManager.fulfilledFamilyCondition = true;
+            }
  
-        public void sendFamilyToGM()
-        {
-            gameManager.fulfilledFamilyCondition = true;
-        }
+        
 }
