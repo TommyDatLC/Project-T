@@ -957,6 +957,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4266253064527342773, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7205425614246729794, guid: 3df95c2f79597944a93910c2d2e92ef5, type: 3}
     - target: {fileID: 6231297855023737241, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: return_point
       value: 
@@ -1249,6 +1253,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4266253064527342773, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7205425614246729794, guid: 3df95c2f79597944a93910c2d2e92ef5, type: 3}
     - target: {fileID: 6231297855023737241, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: return_point
       value: 
@@ -2268,6 +2276,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4266253064527342773, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7205425614246729794, guid: 3df95c2f79597944a93910c2d2e92ef5, type: 3}
     - target: {fileID: 6231297855023737241, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: return_point
       value: 
@@ -2469,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4266253064527342773, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7205425614246729794, guid: 3df95c2f79597944a93910c2d2e92ef5, type: 3}
     - target: {fileID: 6231297855023737241, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: return_point
       value: 
