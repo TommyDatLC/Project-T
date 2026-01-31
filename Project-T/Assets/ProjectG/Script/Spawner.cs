@@ -7,37 +7,45 @@ namespace Script
     public class SpawnItem
     {
         [Range(1, 100)] public float spawn_rate;
-        public Item.Item spawnItem; 
+        public GameObject spawnItem; // Changed to GameObject for standard Instantiate
     }
 
     public class Spawner : MonoBehaviour
     {
+        [Header("Spawn Settings")]
         [SerializeField] List<SpawnItem> spawn_items;
+        
+        [Header("Debug & Clamping Info")]
+        [SerializeField] private BoxCollider2D mapCollider; // Drag your 'sprite_Checker_0_map' here
 
-        /// <summary>
-        /// Gọi hàm này từ bên ngoài để spawn số lượng item mong muốn.
-        /// </summary>
-        /// <param name="count">Số lượng item cần spawn một lúc.</param>
         public void Spawn(int count)
         {
-            Debug.Log("Spawning " + count);
+            // Debug Map Size
+            if (mapCollider != null)
+            {
+                Debug.Log($"<color=cyan>Map Bounds Check:</color> Size: {mapCollider.size} | " +
+                          $"Min: {mapCollider.bounds.min} | Max: {mapCollider.bounds.max}");
+            }
+            else
+            {
+                Debug.LogWarning("Spawner: No Map Collider assigned for debugging!");
+            }
+
             if (spawn_items == null || spawn_items.Count == 0) return;
 
-            // 1. Tính tổng rate (Chỉ cần tính 1 lần ở đầu hàm để tối ưu)
             float totalRate = 0f;
             foreach (var item in spawn_items)
             {
                 totalRate += item.spawn_rate;
             }
 
-            // 2. Lặp lại việc spawn theo số lượng "count" yêu cầu
             for (int i = 0; i < count; i++)
             {
-                SpawnSingleItem(totalRate);
+                SpawnSingleItem(totalRate, i);
             }
         }
 
-        private void SpawnSingleItem(float totalRate)
+        private void SpawnSingleItem(float totalRate, int index)
         {
             float randomValue = Random.Range(0, totalRate);
             float currentRate = 0f;
@@ -50,12 +58,22 @@ namespace Script
                 {
                     if (item.spawnItem != null)
                     {
-                        // Instantiate mà không truyền vị trí/xoay
-                        // Logic vị trí sẽ do hàm Start() của Item tự xử lý
-                        Instantiate(item.spawnItem);
+                        GameObject spawned = Instantiate(item.spawnItem);
+                        // Debug Item Generation
+                        Debug.Log($"<color=yellow>Spawned Item {index}:</color> {spawned.name} at Position: {spawned.transform.position}");
                     }
-                    return; // Đã spawn xong item này, thoát vòng lặp foreach
+                    return; 
                 }
+            }
+        }
+
+        // Draw the map area in the Scene View so you can see if the collider is actually covering the art
+        private void OnDrawGizmos()
+        {
+            if (mapCollider != null)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireCube(mapCollider.bounds.center, mapCollider.bounds.size);
             }
         }
     }

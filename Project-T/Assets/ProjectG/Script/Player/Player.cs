@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
         // 3. Xử lý lật mặt (Flip)
         if (moveX > 0) 
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-3, 3, 1);
         }
         else if (moveX < 0) 
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(3, 3, 1);
         }
     }
 
