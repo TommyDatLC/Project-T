@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
    async void SetCurrentPlayer(int i)
    {
-       overlay_controller.Show($"Player {i} phase",2);
+       overlay_controller.Show($"Player {i+1} phase",2);
        await Task.Delay(2000);
        currentPlayer = i;
        Debug.Log($"Player {currentPlayer} is unlocked");
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
    {
        for (int i = 0; i < player.Length; i++)
        {
-           player[i].Hide();
+           player[i].HideAndDisable();
        }
    }
 
