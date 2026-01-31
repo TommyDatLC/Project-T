@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] LayerMask interactable_layer_mask;
     [SerializeField] private float speed;
     [SerializeField] private float interaction_radius = 1.0f;
     public Action<List<(string, Action<Player>)>> onMeetInteraction;
@@ -138,6 +138,7 @@ public class Player : MonoBehaviour
     {
         
     }
+
     void Start()
     {
         GridLoadingController.Instance.TransitionOut();
@@ -147,9 +148,8 @@ public class Player : MonoBehaviour
         ani = GetComponent<Animator>();
         return_point.Init(this);
     }
-    [SerializeField] LayerMask interactable_layer_mask;
 
-    
+
     // Update is called once per frame
     
 

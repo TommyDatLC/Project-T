@@ -4,7 +4,7 @@ namespace Script.EndGame
 {
     public static class EndgameEvaluator
     {
-        public enum EndingType { SecretFamily, Success, Failure }
+        public enum EndingType { SecretFamily, Frightening, Questioning, Nonchalant, Failure }
 
         public struct EndgameResult
         {
@@ -16,42 +16,47 @@ namespace Script.EndGame
 
         public static EndgameResult EvaluateGame(float drawingScore, float elapsed, float limit, bool metSpecialCondition)
         {
-            // 1. Priority: Secret Ending
+            // 1. Secret Ending: The bird doesn't leave; it joins the family.
             if (metSpecialCondition)
             {
-                return new EndgameResult 
-                { 
-                    type = EndingType.SecretFamily, 
-                    endingTitle = "Ending: Family", 
-                    description = "You found what truly mattered.", 
-                    themeColor = new Color(1f, 0.5f, 0.8f) // Pinkish/Warm
-                };
+                return CreateResult(EndingType.SecretFamily, "Ending: Kinship", 
+                    "The predator didn't see a threat... it saw a long-lost relative.", new Color(1f, 0.6f, 0.2f));
             }
 
-            // 2. Logic: Success vs Failure
-            // Condition: Must have time left AND a decent drawing score (e.g., > 50%)
             bool isTimeValid = elapsed < limit;
-            bool isDrawingValid = drawingScore >= 50f;
+            float timePercentRemaining = (limit - elapsed) / limit;
 
-            if (isTimeValid && isDrawingValid)
+            // 2. Frightening: High accuracy (The mask is terrifyingly realistic/detailed)
+            if (isTimeValid && drawingScore > 75f)
             {
-                return new EndgameResult 
-                { 
-                    type = EndingType.Success, 
-                    endingTitle = "Ending: Success", 
-                    description = $"Completed in {elapsed:F1}s with {drawingScore:F1}% accuracy.", 
-                    themeColor = Color.green 
-                };
+                return CreateResult(EndingType.Frightening, "Ending: Terrific", 
+                    "That bird will be in therapy for years. A masterpiece of horror.", Color.magenta);
             }
 
-            // 3. Default: Failure
-            return new EndgameResult 
-            { 
-                type = EndingType.Failure, 
-                endingTitle = "Ending: Failure", 
-                description = isTimeValid ? "The drawing was too unstable." : "Time ran out.", 
-                themeColor = Color.red 
-            };
+            // 3. Questioning: Finished fast, but the mask looks like nothing.
+            // The bird is just confused why you're waving a scribble at it.
+            if (timePercentRemaining > 0.75f && drawingScore < 50f)
+            {
+                return CreateResult(EndingType.Questioning, "Ending: Confusion", 
+                    "The bird stopped out of pure bewilderment. Is that... a face?", Color.yellow);
+            }
+
+            // 4. Nonchalant: Valid score. It worked, but it wasn't a spectacle.
+            if (isTimeValid && drawingScore >= 50f)
+            {
+                return CreateResult(EndingType.Nonchalant, "Ending: Shooed", 
+                    "The bird left, mostly because your mask was too annoying to look at.", Color.cyan);
+            }
+
+            // 5. Failure: Too slow or the mask was too poorly drawn to be scary.
+            string failReason = isTimeValid ? "The bird laughed at your 'art' and attacked." : "The bird reached you before you finished.";
+            return CreateResult(EndingType.Failure, "Ending: Prey", failReason, Color.red);
+        }
+
+        // Helper method to keep the main logic clean
+        private static EndgameResult CreateResult(EndingType type, string title, string desc, Color color)
+        {
+            return new EndgameResult { type = type, endingTitle = title, description = desc, themeColor = color };
         }
     }
 }

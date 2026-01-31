@@ -1,24 +1,19 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: 100%;">
         <ui:VisualElement name="StatsRoot" style="background-color: rgba(255, 255, 255, 0.9); padding: 50px; border-radius: 30px; border-width: 8px; border-color: black; align-items: center;">
-            
-            <ui:Label name="EndingTitle" text="ENDING TITLE" style="font-size: 60px; -unity-font-style: bold; margin-bottom: 20px;" />
-            
+            <ui:Label name="EndingTitle" text="ENDING TITLE" style="font-size: 60px; -unity-font-style: bold; margin-bottom: 20px; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/doublebass.hin.ttf?fileID=12800000&amp;guid=8bb2250b52569fe419594bc7f8e76e9c&amp;type=3#doublebass.hin&quot;);"/>
             <ui:VisualElement style="flex-direction: row; margin-bottom: 10px;">
-                <ui:Label text="SCORE: " style="font-size: 30px; color: black;" />
-                <ui:Label name="ScoreValue" text="0%" style="font-size: 30px; color: black; -unity-font-style: bold;" />
+                <ui:Label text="SCORE: " style="font-size: 30px; color: black; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
+                <ui:Label name="ScoreValue" text="0%" style="font-size: 30px; color: black; -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
             </ui:VisualElement>
-
             <ui:VisualElement style="flex-direction: row; margin-bottom: 40px;">
-                <ui:Label text="TIME: " style="font-size: 30px; color: black;" />
-                <ui:Label name="TimeValue" text="0s" style="font-size: 30px; color: black; -unity-font-style: bold;" />
+                <ui:Label text="TIME: " style="font-size: 30px; color: black; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
+                <ui:Label name="TimeValue" text="0s" style="font-size: 30px; color: black; -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
             </ui:VisualElement>
-
             <ui:VisualElement style="flex-direction: row;">
-                <ui:Button name="RestartBtn" text="RESTART" style="width: 200px; height: 60px; font-size: 25px; margin-right: 20px;" />
-                <ui:Button name="MenuBtn" text="MENU" style="width: 200px; height: 60px; font-size: 25px;" />
+                <ui:Button name="RestartBtn" text="RESTART" style="width: 200px; height: 60px; font-size: 25px; margin-right: 20px; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
+                <ui:Button name="MenuBtn" text="MENU" style="width: 200px; height: 60px; font-size: 25px; -unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
             </ui:VisualElement>
-
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

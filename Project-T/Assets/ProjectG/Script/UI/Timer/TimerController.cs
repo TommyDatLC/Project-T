@@ -55,7 +55,7 @@ public class TimerController : MonoBehaviour
             while (_currentTime > 0)
             {
                 // Kiểm tra hủy task (khi out game hoặc disable)
-                if (_cts.Token.IsCancellationRequested) break;
+                if (_cts?.IsCancellationRequested ?? true) break;
 
                 if (!_isPaused)
                 {

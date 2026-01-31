@@ -25,6 +25,12 @@ public class GridLoadingController : MonoBehaviour
     private VisualElement _mask;
     private Label _label;
     private GridElement _gridDrawer;
+    
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {

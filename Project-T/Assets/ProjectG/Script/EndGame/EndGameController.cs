@@ -63,8 +63,40 @@ namespace Script.EndGame
             var res = EndGameData.Result;
             
             Label reactionLabel = reaction.Q<Label>("ReactionText");
+
             if (reactionLabel != null)
-                reactionLabel.text = res.type == EndgameEvaluator.EndingType.SecretFamily ? "Family..." : "Acceptable.";
+            {
+                // Clear any previous custom styling if necessary
+                reactionLabel.style.color = res.themeColor;
+
+                switch (res.type)
+                {
+                    case EndgameEvaluator.EndingType.SecretFamily:
+                        reactionLabel.text = "The flock recognizes its own. You are home.";
+                        break;
+
+                    case EndgameEvaluator.EndingType.Frightening:
+                        reactionLabel.text = "The predator fled in absolute terror!";
+                        // Tip: You could trigger a screen shake here
+                        break;
+
+                    case EndgameEvaluator.EndingType.Questioning:
+                        reactionLabel.text = "The bird is... deeply confused by your existence.";
+                        break;
+
+                    case EndgameEvaluator.EndingType.Nonchalant:
+                        reactionLabel.text = "It left, but it wasn't impressed.";
+                        break;
+
+                    case EndgameEvaluator.EndingType.Failure:
+                        reactionLabel.text = "You've become a very artistic snack.";
+                        break;
+
+                    default:
+                        reactionLabel.text = "The encounter ends.";
+                        break;
+                }
+            }
             
             yield return new WaitForSeconds(5f);
             root.Remove(reaction);

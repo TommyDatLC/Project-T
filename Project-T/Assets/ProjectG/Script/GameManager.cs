@@ -138,9 +138,6 @@ public class GameManager : MonoBehaviour
        inputHandler?.Disable();
        this.enabled = false;
 
-       // 2. Store data in the STATIC class (This survives the scene change)
-       Player p = GetCurrentPlayer();
-
     
        EndGameData.FinalScore = score;
        EndGameData.FinalTime = sumTime;
