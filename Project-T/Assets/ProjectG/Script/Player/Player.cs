@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
         ani.SetBool("IsPlayerHorizontal", isHorizontal);
         ani.SetBool("IsPlayerUp", isPlayerUp);
         ani.SetBool("IsPlayerDown", isPlayerDown);
-        ani.SetBool("IsNhatDo", pickingItem);
+        ani.SetBool("IsNhatDo", isHoldingItem());
     }
             // Sau khi mờ hẳn thì disable GameObject hoặc Component
          
