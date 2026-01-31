@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 1658afcd5a2c239499af1a8ef24f251d
+guid: e136d72576ba8874a9a1f700321f1766
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4957328231368732982
-    second: Stand-01_0
-  - first:
-      213: -8940376223925796829
-    second: Stand-01_1
-  - first:
-      213: -3821376161370215595
-    second: Stand-01_2
-  - first:
-      213: 6991067694983813966
-    second: Stand-01_3
-  - first:
-      213: -8127116087145280750
-    second: Stand-01_4
+      213: 889398428586033255
+    second: "C\xE1i que@4x_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stand-01_0
+      name: "C\xE1i que@4x_0"
       rect:
         serializedVersion: 2
-        x: 187
-        y: 2925
-        width: 442
-        height: 956
+        x: 17
+        y: 501
+        width: 1118
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,96 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 631bfb9e2c7fbc440800000000000000
-      internalID: 4957328231368732982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stand-01_1
-      rect:
-        serializedVersion: 2
-        x: 824
-        y: 2923
-        width: 440
-        height: 927
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3200e8641376de380800000000000000
-      internalID: -8940376223925796829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stand-01_2
-      rect:
-        serializedVersion: 2
-        x: 1512
-        y: 2922
-        width: 440
-        height: 893
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55be164b0aeb7fac0800000000000000
-      internalID: -3821376161370215595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stand-01_3
-      rect:
-        serializedVersion: 2
-        x: 2178
-        y: 2924
-        width: 440
-        height: 926
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e4b18304703450160800000000000000
-      internalID: 6991067694983813966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stand-01_4
-      rect:
-        serializedVersion: 2
-        x: 2921
-        y: 2925
-        width: 441
-        height: 956
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21bc7516afea63f80800000000000000
-      internalID: -8127116087145280750
+      spriteID: 76049a79827c75c00800000000000000
+      internalID: 889398428586033255
       vertices: []
       indices: 
       edges: []
@@ -248,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Stand-01_0: 4957328231368732982
-      Stand-01_1: -8940376223925796829
-      Stand-01_2: -3821376161370215595
-      Stand-01_3: 6991067694983813966
-      Stand-01_4: -8127116087145280750
+      "C\xE1i que@4x_0": 889398428586033255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

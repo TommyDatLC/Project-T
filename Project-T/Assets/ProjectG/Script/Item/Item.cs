@@ -55,5 +55,12 @@ namespace Script.Item
             transform.position = GetRandomPositionOutside();
             itemCount++;
         }
+
+        public void Rotate()
+        {
+            // Xoay quanh trục (0, 0, 1) một góc 90 độ
+            transform.localRotation *= Quaternion.Euler(0, 0, 90);
+            Debug.Log("ROTATE");
+        }
     }
 }
