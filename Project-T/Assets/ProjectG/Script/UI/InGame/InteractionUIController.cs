@@ -16,6 +16,7 @@ public class InteractionUIController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("change player");
         if (uiDocument == null) uiDocument = GetComponent<UIDocument>();
         _root = uiDocument.rootVisualElement;
         playerContext = GameManager.instance.GetCurrentPlayer();

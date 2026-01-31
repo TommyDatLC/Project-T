@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProjectG/Script/UI/InGame/InteractionStyle.uss?fileID=7433441132597879392&amp;guid=7712cda2e02f41d4b3b3321066367fc9&amp;type=3#InteractionStyle"/>
+    <ui:VisualElement name="interaction-list" class="interaction-container" style="top: 70%; left: 70%;"/>
+</ui:UXML>

@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
            float time = GetCurrentPlayer().getCurrentTime();
                onTimeCounting?.Invoke(time);
            await Task.Delay(100);
-           Debug.Log(time);
+//           Debug.Log(time);
        }
    }
    void Finalize()

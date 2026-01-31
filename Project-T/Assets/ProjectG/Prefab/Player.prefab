@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6991494421614145226}
   - component: {fileID: 4266253064527342773}
-  - component: {fileID: 6231297855023737241}
   - component: {fileID: 9172244621234497530}
   - component: {fileID: 8031105306214924527}
+  - component: {fileID: 248059652778925117}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -96,25 +96,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6231297855023737241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507800565333314045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282709bff97665341b57ceb5772e6137, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 10
-  interaction_radius: 1
-  cam: {fileID: 594194510177431649}
-  viTriDo: {fileID: 8429735627629488600}
-  interactable_layer_mask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!61 &9172244621234497530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,6 +169,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &248059652778925117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507800565333314045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19167190c44427c8c723442d13bbbee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  speed: 10
+  interaction_radius: 1
+  cam: {fileID: 594194510177431649}
+  return_point: {fileID: 0}
+  viTriDo: {fileID: 8429735627629488600}
+  interactable_layer_mask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &2236820136745826492
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 6991494421614145226}
-  cornerTopLeft: {fileID: 0}
-  cornerBottomRight: {fileID: 0}
+  mapBoundsSprite: {fileID: 0}
 --- !u!1 &5220612693076599300
 GameObject:
   m_ObjectHideFlags: 0
