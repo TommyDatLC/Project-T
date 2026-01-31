@@ -43,14 +43,13 @@ public class MainMenuController : MonoBehaviour
         if (_btnQuit != null) _btnQuit.clicked -= OnQuitClicked;
     }
 
-
     private void OnPlayClicked()
     {
         Debug.Log("Đang chuyển sang Scene: Experiment");
         GridLoadingController.Instance.TransitionIn();
         SceneManager.LoadScene("Scenes/GamePlay");
     }
-    
+
     private void OnSettingsClicked()
     {
         // 4. CHỈNH SỬA: Truy cập trực tiếp qua Singleton Instance
