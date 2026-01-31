@@ -79,8 +79,17 @@ namespace Script.EndGame
             stats.Q<Label>("TimeValue").text = $"{EndGameData.FinalTime:F1}s";
 
             // Button Listeners - Ensure these scene names match your Build Settings
-            stats.Q<Button>("RestartBtn").clicked += () => SceneManager.LoadScene("MainGameScene");
-            stats.Q<Button>("MenuBtn").clicked += () => SceneManager.LoadScene("MainMenu");
+            stats.Q<Button>("RestartBtn").clicked += () =>
+            {
+                GridLoadingController.Instance.TransitionIn();
+                SceneManager.LoadScene("Scenes/GamePlay");
+            };
+            
+            stats.Q<Button>("MenuBtn").clicked += () =>
+            {
+                GridLoadingController.Instance.TransitionIn();
+                SceneManager.LoadScene("MainMenu");
+            };
         }
 
         private void AnimateIn(VisualElement el)

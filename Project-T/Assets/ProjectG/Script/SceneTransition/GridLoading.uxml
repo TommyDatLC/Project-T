@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProjectG/Script/SceneTransition/GridLoading.uss?fileID=7433441132597879392&amp;guid=8801d467e0274338a446f068bbed1973&amp;type=3#GridLoading"/>
+    <ui:VisualElement name="Root" class="root-container">
+        <ui:VisualElement name="Mask" class="mask-container"/>
+        <ui:Label name="Label" text="LOADING" class="loading-text" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
+    </ui:VisualElement>
+</ui:UXML>

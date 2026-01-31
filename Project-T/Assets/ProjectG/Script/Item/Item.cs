@@ -8,6 +8,7 @@ namespace Script.Item
         SpriteRenderer spawn_bound;// Kéo vùng Trắng vào
         public static int itemCount;
         public const int maxItem = 8;
+        public bool is_bird;
         public Vector2 GetRandomPositionOutside()
         {
             Bounds L = game_map_bound.bounds;
@@ -44,8 +45,10 @@ namespace Script.Item
             p.SetItem(this);
             DeleteInteraction(0);
             itemCount--;
+            if (is_bird)
+                p.sendFamilyToGM();
         }
-
+        
         protected override void Start()
         {
             base.Start();
@@ -55,7 +58,7 @@ namespace Script.Item
             transform.position = GetRandomPositionOutside();
             itemCount++;
         }
-
+        
         public void Rotate()
         {
             // Xoay quanh trục (0, 0, 1) một góc 90 độ

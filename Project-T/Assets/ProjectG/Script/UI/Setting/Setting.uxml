@@ -4,12 +4,12 @@
         <ui:VisualElement name="settings-panel" class="panel">
             <ui:Label text="GAME SETTINGS" class="header-text" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); -unity-font-style: normal;"/>
             <ui:VisualElement class="content-container">
-                <ui:Slider label="Music Volume" name="music-slider" low-value="0" high-value="100" value="50" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
-                <ui:DropdownField label="Resolution" name="resolution-dropdown" choices="Max (Native),FullHD (1920x1080),HD (720p)" index="0" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Comfortaa-VariableFont_wght.ttf?fileID=12800000&amp;guid=a173af0c32263034188ee1f555655f10&amp;type=3#Comfortaa-VariableFont_wght&quot;);"/>
+                <ui:Slider label="Music Volume" name="music-slider" low-value="0" high-value="100" value="50" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
+                <ui:DropdownField label="Resolution" name="resolution-dropdown" choices="Max (Native),FullHD (1920x1080),HD (720p)" index="0" class="setting-row" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
             </ui:VisualElement>
             <ui:VisualElement class="footer-container">
-                <GameButton icon-image="" text="Close&#10;" name="close-btn" class="btn btn-secondary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); font-size: 20px;"/>
-                <GameButton icon-image="" text="Save Changes" name="save-btn" class="btn btn-primary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;); font-size: 20px;"/>
+                <GameButton icon-image="" text="Close&#10;" name="close-btn" class="btn btn-secondary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;); font-size: 20px; -unity-font-style: normal;"/>
+                <GameButton icon-image="" text="Save Changes" name="save-btn" class="btn btn-primary" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;); font-size: 20px; -unity-font-style: normal;"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

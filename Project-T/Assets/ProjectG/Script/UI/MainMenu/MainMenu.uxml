@@ -3,9 +3,9 @@
     <ui:VisualElement name="main-container" class="main-container">
         <ui:Label text="mask the raid" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/doublebass.rial-bold.ttf?fileID=12800000&amp;guid=cfab19dfd3a69064e8e8291d11ecd9ae&amp;type=3#doublebass.rial-bold&quot;); -unity-font-style: normal; color: rgb(0, 171, 14);"/>
         <ui:VisualElement class="menu-buttons">
-            <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
-            <GameButton icon-image="" name="btn-settings" text="SETTINGS" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
-            <GameButton icon-image="" name="btn-quit" text="QUIT" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/Mansalva-Regular.ttf?fileID=12800000&amp;guid=29130f032596b574ab038f0d31d54bf1&amp;type=3#Mansalva-Regular&quot;);"/>
+            <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
+            <GameButton icon-image="" name="btn-settings" text="SETTINGS" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
+            <GameButton icon-image="" name="btn-quit" text="QUIT" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

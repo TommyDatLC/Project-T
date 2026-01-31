@@ -1,0 +1,25 @@
+/* Container bao ngoài cùng */
+.root-container {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-color: rgb(20, 20, 20); /* Màu nền tối */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mask Container: Quan trọng để cắt hiệu ứng trượt */
+.mask-container {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0%; /* Bắt đầu ẩn */
+    overflow: hidden; /* CẮT NHỮNG GÌ LÒI RA NGOÀI */
+}
+
+/* Chữ Loading */
+.loading-text {
+    font-size: 64px;
+    -unity-font-style: bold;
+    color: white;
+    opacity: 0; /* Bắt đầu ẩn */
+    transform-origin: center; /* Để scale từ tâm */
+}

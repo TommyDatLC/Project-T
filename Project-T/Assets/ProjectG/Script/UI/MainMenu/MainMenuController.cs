@@ -15,7 +15,8 @@ public class MainMenuController : MonoBehaviour
     {
         _doc = GetComponent<UIDocument>();
         if (_doc == null) return;
-
+        if ( GridLoadingController.Instance)
+        GridLoadingController.Instance.TransitionOut();
         var root = _doc.rootVisualElement;
 
         // 2. CHỈNH SỬA: Tìm đúng kiểu dữ liệu GameButton theo Name bạn đặt trong UI Builder
@@ -42,12 +43,14 @@ public class MainMenuController : MonoBehaviour
         if (_btnQuit != null) _btnQuit.clicked -= OnQuitClicked;
     }
 
+
     private void OnPlayClicked()
     {
         Debug.Log("Đang chuyển sang Scene: Experiment");
-        SceneManager.LoadScene("Experiment");
+        GridLoadingController.Instance.TransitionIn();
+        SceneManager.LoadScene("Scenes/GamePlay");
     }
-
+    
     private void OnSettingsClicked()
     {
         // 4. CHỈNH SỬA: Truy cập trực tiếp qua Singleton Instance

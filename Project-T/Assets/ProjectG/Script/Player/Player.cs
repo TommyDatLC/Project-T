@@ -27,6 +27,13 @@ public class Player : MonoBehaviour
     bool is_Counter_Started = false;
     [SerializeField] ReturnPoint return_point;
     public bool isLoss; // Người chơi đã thua hay chưa
+    GameManager gameManager = null;
+
+  
+    public void InitGM(GameManager manager)
+    {
+        gameManager = manager;
+    }
     public void setLock(bool locked)
 {
     is_locked = locked;
@@ -132,7 +139,8 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        
+        GridLoadingController.Instance.TransitionOut();
+
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         return_point.Init(this);
@@ -192,5 +200,9 @@ public class Player : MonoBehaviour
          
             // Hoặc spriteRenderer.enabled = false;
         }
-    
+ 
+        public void sendFamilyToGM()
+        {
+            gameManager.fulfilledFamilyCondition = true;
+        }
 }
