@@ -47,6 +47,7 @@ public class PauseMenuController : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame) 
         {
             TogglePause();
+            
         }
     }
 
@@ -84,9 +85,11 @@ public class PauseMenuController : MonoBehaviour
             TimerController.Instance.TogglePause(false);
     }
 
-    private void ExitGame()
+    private async void ExitGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        GridLoadingController.Instance.TransitionIn();
+        
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }

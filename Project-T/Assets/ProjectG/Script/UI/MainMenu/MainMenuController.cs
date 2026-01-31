@@ -47,7 +47,7 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Đang chuyển sang Scene: Experiment");
         GridLoadingController.Instance.TransitionIn();
-        SceneManager.LoadScene("Scenes/GamePlay");
+        SceneManager.LoadSceneAsync("Scenes/GamePlay");
     }
 
     private void OnSettingsClicked()

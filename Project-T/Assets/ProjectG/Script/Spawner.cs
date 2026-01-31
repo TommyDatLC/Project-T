@@ -20,6 +20,7 @@ namespace Script
         /// <param name="count">Số lượng item cần spawn một lúc.</param>
         public void Spawn(int count)
         {
+            Debug.Log("Spawning " + count);
             if (spawn_items == null || spawn_items.Count == 0) return;
 
             // 1. Tính tổng rate (Chỉ cần tính 1 lần ở đầu hàm để tối ưu)

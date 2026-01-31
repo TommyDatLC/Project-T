@@ -221,6 +221,10 @@ public class Player : MonoBehaviour
             {
                 gameManager.fulfilledFamilyCondition = true;
             }
- 
-        
+
+
+            public float getSumTime()
+            {
+                return final_time;
+            }
 }

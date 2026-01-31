@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
        OnChangePlayer?.Invoke();
        GetCurrentPlayer().setLock(false);
        virtual_camera.Target.TrackingTarget = GetCurrentPlayer().transform;
+       Debug.Log("Spawning");
        spawner_obj.Spawn(Item.maxItem - Item.itemCount);
    }
 
@@ -91,11 +92,16 @@ public class GameManager : MonoBehaviour
 //           Debug.Log(time);
        }
    }
+
+   private float sumTime;
    async void Finalize()
    {
        overlay_controller.Show($"Draw phase",2);
        await Task.Delay(2000);
-
+       for (int i = 0; i < player.Length; i++)
+       {
+           sumTime += player[i].getSumTime();
+       }
        circle_drawer.onStopDrawing -= HandleEndGame;
        circle_drawer.onStopDrawing += HandleEndGame;
        
@@ -134,12 +140,12 @@ public class GameManager : MonoBehaviour
 
        // 2. Store data in the STATIC class (This survives the scene change)
        Player p = GetCurrentPlayer();
-       float timeSpent = p != null ? p.getCurrentTime() : 0f;
+
     
        EndGameData.FinalScore = score;
-       EndGameData.FinalTime = timeSpent;
+       EndGameData.FinalTime = sumTime;
        // Perform the evaluation here
-       EndGameData.Result = EndgameEvaluator.EvaluateGame(score, timeSpent, 120f, fulfilledFamilyCondition);
+       EndGameData.Result = EndgameEvaluator.EvaluateGame(score, sumTime, 120f, fulfilledFamilyCondition);
 
        // 3. Capture and Go
        // Make sure "EndGame" matches the name in your Build Settings exactly

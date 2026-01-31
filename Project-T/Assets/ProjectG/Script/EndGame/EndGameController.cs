@@ -82,13 +82,13 @@ namespace Script.EndGame
             stats.Q<Button>("RestartBtn").clicked += () =>
             {
                 GridLoadingController.Instance.TransitionIn();
-                SceneManager.LoadScene("Scenes/GamePlay");
+                SceneManager.LoadSceneAsync("Scenes/GamePlay");
             };
             
             stats.Q<Button>("MenuBtn").clicked += () =>
             {
                 GridLoadingController.Instance.TransitionIn();
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadSceneAsync("MainMenu");
             };
         }
 
