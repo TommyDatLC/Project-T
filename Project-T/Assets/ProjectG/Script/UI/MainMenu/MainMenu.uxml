@@ -3,9 +3,9 @@
     <ui:VisualElement name="main-container" class="main-container">
         <ui:Label text="MY SUPER GAME" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/TitanOne-Regular.ttf?fileID=12800000&amp;guid=95ac7497b650e604c84380eb61af0634&amp;type=3#TitanOne-Regular&quot;); -unity-font-style: normal;"/>
         <ui:VisualElement class="menu-buttons">
-            <ui:Button name="btn-play" text="PLAY GAME" class="menu-btn"/>
-            <ui:Button name="btn-settings" text="SETTINGS" class="menu-btn"/>
-            <ui:Button name="btn-quit" text="QUIT" class="menu-btn btn-quit"/>
+            <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn"/>
+            <GameButton icon-image="" name="btn-settings" text="SETTINGS" class="menu-btn"/>
+            <GameButton icon-image="" name="btn-quit" text="QUIT" class="menu-btn"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

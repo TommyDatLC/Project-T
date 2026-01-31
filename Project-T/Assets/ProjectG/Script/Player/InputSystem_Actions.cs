@@ -103,8 +103,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""fa40aa8c-e660-49ed-8c5b-f3ed5393a532"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d29cce01-0fd5-4056-ac3d-292a049e3b34"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -169,11 +169,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a668b3c5-1eb2-4c4e-8d09-51f7417a96b2"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""id"": ""6652754c-5599-4264-b42b-bef09fbd616f"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": """",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
