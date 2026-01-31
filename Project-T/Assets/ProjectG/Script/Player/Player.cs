@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public Action<List<(string, Action<Player>)>> onMeetInteraction;
     [Header("Sprite")]
     SpriteRenderer spriteRenderer;
-    
+    Animator ani;
+
     public Action on_player_locked;
     [SerializeField] private Camera cam;
     Rigidbody2D rb;
@@ -143,6 +144,7 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
         return_point.Init(this);
     }
     [SerializeField] LayerMask interactable_layer_mask;
@@ -163,6 +165,7 @@ public class Player : MonoBehaviour
         if (is_locked)
             return;
         meetInteractable();
+        UpdateAnimator();
     }
 
     public void RotateItem()
@@ -196,6 +199,21 @@ public class Player : MonoBehaviour
             // Đảm bảo alpha bằng 0 tuyệt đối
             spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, 0);
 
+        // Sau khi mờ hẳn thì disable GameObject hoặc Component
+
+        // Hoặc spriteRenderer.enabled = false;
+    }
+    void UpdateAnimator()
+    {
+        bool isHorizontal = Math.Abs(rb.linearVelocity.x) > 0.1f;
+        bool isPlayerUp = rb.linearVelocity.y > 0;
+        bool isPlayerDown = rb.linearVelocity.y < 0;
+
+        ani.SetBool("IsPlayerHorizontal", isHorizontal);
+        ani.SetBool("IsPlayerUp", isPlayerUp);
+        ani.SetBool("IsPlayerDown", isPlayerDown);
+        ani.SetBool("IsNhatDo", pickingItem);
+    }
             // Sau khi mờ hẳn thì disable GameObject hoặc Component
          
             // Hoặc spriteRenderer.enabled = false;

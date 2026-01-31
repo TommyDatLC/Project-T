@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: c2fd8ae304e06ff4db9c28f234428240
+guid: a44e0e4c9b6a7aa41b75463f6b372794
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7230059264513811884
-    second: nhat do-01 1_0
+      213: 1775910116661359675
+    second: cai bong-01_0
   - first:
-      213: 2307145412002228186
-    second: nhat do-01 1_1
+      213: 1402713115525372867
+    second: cai bong-01_1
   - first:
-      213: 9103073485132109108
-    second: nhat do-01 1_2
+      213: -609349628603269049
+    second: cai bong-01_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,30 +102,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nhat do-01 1_0
+      name: cai bong-01_0
       rect:
         serializedVersion: 2
-        x: 1450
-        y: 2320
-        width: 441
-        height: 957
+        x: 243
+        y: 1375
+        width: 396
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca52e563894565460800000000000000
-      internalID: 7230059264513811884
+      spriteID: b347f9887dc45a810800000000000000
+      internalID: 1775910116661359675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nhat do-01 1_1
+      name: cai bong-01_1
       rect:
         serializedVersion: 2
-        x: 2310
-        y: 2320
-        width: 531
-        height: 955
+        x: 688
+        y: 1387
+        width: 302
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad7a0974780a40020800000000000000
-      internalID: 2307145412002228186
+      spriteID: 3cbdbac8520777310800000000000000
+      internalID: 1402713115525372867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nhat do-01 1_2
+      name: cai bong-01_2
       rect:
         serializedVersion: 2
-        x: 3141
-        y: 2321
-        width: 442
-        height: 954
+        x: 1049
+        y: 1375
+        width: 396
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4359395ca1d945e70800000000000000
-      internalID: 9103073485132109108
+      spriteID: 7400613cdb72b87f0800000000000000
+      internalID: -609349628603269049
       vertices: []
       indices: 
       edges: []
@@ -198,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nhat do-01 1_0: 7230059264513811884
-      nhat do-01 1_1: 2307145412002228186
-      nhat do-01 1_2: 9103073485132109108
+      cai bong-01_0: 1775910116661359675
+      cai bong-01_1: 1402713115525372867
+      cai bong-01_2: -609349628603269049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
