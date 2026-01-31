@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private float start_runtime_counting,final_time;
     bool is_Counter_Started = false;
     [SerializeField] ReturnPoint return_point;
+    public bool isLoss; // Người chơi đã thua hay chưa
     public void setLock(bool locked)
 {
     is_locked = locked;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         on_player_locked?.Invoke();
     
     // Kiểm tra rb và cam có tồn tại không trước khi dùng
-    if (cam != null) cam.enabled = !locked;
+    if (cam != null) cam.gameObject.SetActive(!locked);
     
     if (rb == null) rb = GetComponent<Rigidbody2D>(); // Tự tìm lại nếu chưa có
     if (rb != null) rb.simulated = !locked;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
         final_time = Time.time - start_runtime_counting;
         setLock(true);
         Debug.Log($"final time is: {final_time}");
+        is_Counter_Started = false;
     }
 
     void StartTime()
@@ -82,8 +84,8 @@ public class Player : MonoBehaviour
             return;
         }
         // 1. Tính toán hướng dựa trên logic của bạn (giữ nguyên cái -move_value.x của bạn)
-        float moveX = -move_value.x;
-        float moveY = move_value.y;
+        float moveX = -move_value.x;// A : MoveX = 1 D: MoveX = -1 else 0
+        float moveY = move_value.y;// W : MoveY = 1 S: MoveY = -1 else 0
 
         // 2. Thực hiện di chuyển bằng Rigidbody2D thay vì transform
         // Chúng ta giữ nguyên vận tốc hiện tại nhưng thay đổi hướng X và Y
@@ -128,12 +130,14 @@ public class Player : MonoBehaviour
         return_point.Init(this);
     }
     [SerializeField] LayerMask interactable_layer_mask;
+
+    
     // Update is called once per frame
     
 
     public float getCurrentTime()
     {
-        if (is_Counter_Started)
+        if (!is_Counter_Started)
             return -1; 
         return Time.time - start_runtime_counting;
     }

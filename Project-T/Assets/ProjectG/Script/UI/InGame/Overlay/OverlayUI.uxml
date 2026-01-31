@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProjectG/Script/UI/InGame/Overlay/OverlayStyle.uss?fileID=7433441132597879392&amp;guid=6e7d474c5dac43a6bb1292ee2e588223&amp;type=3#OverlayStyle"/>
+    <ui:VisualElement name="Background" class="overlay-container">
+        <ui:Label name="MessageLabel" text="Hello World" class="overlay-text" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-left-color: rgb(43, 43, 43); border-right-color: rgb(43, 43, 43); border-top-color: rgb(43, 43, 43); border-bottom-color: rgb(43, 43, 43); -unity-font-style: normal;"/>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,25 @@
+/* Container chính */
+.overlay-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1); /* Đen 60% opacity */
+    justify-content: center;
+    align-items: center;
+    /* Cài đặt transition cho thuộc tính opacity */
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    opacity: 0; /* Mặc định ẩn đi */
+}
+
+/* Chữ trắng ở giữa */
+.overlay-text {
+    color: white;
+    font-size: 40px;
+    -unity-font-style: bold;
+}
+
+/* Class dùng để kích hoạt fade-in */
+.visible {
+    opacity: 1;
+}

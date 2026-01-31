@@ -1,5 +1,9 @@
 using System;
 using System.Threading.Tasks;
+using ProjectG.Script.UI.InGame.Overlay;
+using Script;
+using Script.Item;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,9 +16,18 @@ public class GameManager : MonoBehaviour
    public static GameManager instance; 
    public SpriteRenderer game_map;
    public SpriteRenderer spawn;
+   public Spawner spawner_obj;
+   // Dang ki event nay de biet thoi gian con lai cua nguoi choi de render
    public Action<float> onTimeCounting;
+   public CircleDrawer circle_drawer;
+   public CinemachineCamera virtual_camera;
+   public OverlayController overlay_controller;
+   
+   
    void Start()
    {
+       
+       circle_drawer.gameObject.SetActive(false);
        slowUpdate();
        instance = this;
        inputHandler = new InputSystem_Actions();
@@ -35,32 +48,49 @@ public class GameManager : MonoBehaviour
                }
                else
                {
-                   currentPlayer = ith + 1;
-                   Debug.Log($"Player {currentPlayer} is unlocked");
-                   OnChangePlayer?.Invoke();
-                   GetCurrentPlayer().setLock(false);
+                   SetCurrentPlayer(ith + 1);
                }
            };
-           GetCurrentPlayer().setLock(false);
-           
        }
+           SetCurrentPlayer(0);
        
        //inputHandler.Player.Interact.performed += player.Interact;
+   }
+
+   async void SetCurrentPlayer(int i)
+   {
+       overlay_controller.Show($"Player {i} phase",2);
+       await Task.Delay(2000);
+       currentPlayer = i;
+       Debug.Log($"Player {currentPlayer} is unlocked");
+       OnChangePlayer?.Invoke();
+       GetCurrentPlayer().setLock(false);
+       virtual_camera.Target.TrackingTarget = GetCurrentPlayer().transform;
+       spawner_obj.Spawn(Item.maxItem - Item.itemCount);
    }
 
    async void slowUpdate()
    {
        for (;;)
        {
-           float time = GetCurrentPlayer().getCurrentTime();
+           Player p = GetCurrentPlayer();
+           float time = p.getCurrentTime();
                onTimeCounting?.Invoke(time);
+               if (time > 120)
+               {
+                    p.StopTime();
+                    p.isLoss = true;
+               }
            await Task.Delay(100);
 //           Debug.Log(time);
        }
    }
-   void Finalize()
+   async void Finalize()
    {
-       
+       overlay_controller.Show($"Draw phase",2);
+       await Task.Delay(2000);
+       circle_drawer.gameObject.SetActive(true);
+       virtual_camera.Target.TrackingTarget = null;
    }
    private void OnDestroy()
    {

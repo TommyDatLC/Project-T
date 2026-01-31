@@ -4,14 +4,14 @@ namespace Script.Item
 {
     public class Item : InteractableObject
     {
-        public SpriteRenderer game_map_bound;// Kéo vùng Checkerboard vào
-        public SpriteRenderer spawn_bound;// Kéo vùng Trắng vào
-
+        SpriteRenderer game_map_bound;// Kéo vùng Checkerboard vào
+        SpriteRenderer spawn_bound;// Kéo vùng Trắng vào
+        public static int itemCount;
+        public const int maxItem = 8;
         public Vector2 GetRandomPositionOutside()
         {
             Bounds L = game_map_bound.bounds;
             Bounds W = spawn_bound.bounds;
-
             // Chia làm 4 vùng để chọn ngẫu nhiên
             // 0: Trái, 1: Phải, 2: Trên, 3: Dưới
             int zone = Random.Range(0, 4);
@@ -43,6 +43,7 @@ namespace Script.Item
         {
             p.SetItem(this);
             DeleteInteraction(0);
+            itemCount--;
         }
 
         protected override void Start()
@@ -52,6 +53,7 @@ namespace Script.Item
             spawn_bound = GameManager.instance.spawn;
             game_map_bound  = GameManager.instance.game_map; 
             transform.position = GetRandomPositionOutside();
+            itemCount++;
         }
     }
 }
