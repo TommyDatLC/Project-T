@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -42,7 +43,8 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Cách viết mới cho Input System Package
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) 
         {
             TogglePause();
         }

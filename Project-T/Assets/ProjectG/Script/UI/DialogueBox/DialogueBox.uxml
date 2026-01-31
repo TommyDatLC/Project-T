@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ui:VisualElement name="DialogueRoot" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="dialogue-container" style="position: absolute; width: 220px; background-color: rgba(0, 0, 0, 0.85); border-radius: 12px; padding: 12px; border-width: 2px; border-color: white; display: flex;">
+            <ui:Label name="dialogue-text" text="Hello there!" style="color: white; font-size: 16px; white-space: normal; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="pointer" style="width: 12px; height: 12px; background-color: rgba(0, 0, 0, 0.85); position: absolute; bottom: -7px; left: 104px; rotate: 45deg; border-right-width: 2px; border-bottom-width: 2px; border-color: white;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
