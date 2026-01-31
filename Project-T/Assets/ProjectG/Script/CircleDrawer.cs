@@ -9,6 +9,7 @@ using DG.Tweening;
 [RequireComponent(typeof(LineRenderer))]
 public class CircleDrawer : MonoBehaviour
 {
+    private bool hasStartedDrawing = false;
     [Header("Settings")]
     public Transform centerPoint;
     public float minDistance = 0.1f;

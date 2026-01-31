@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="StatsRoot" style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5);">
+        <ui:Label name="EndingTitle" text="ENDING NAME" style="font-size: 80px; -unity-font-style: bold; color: rgb(255, 215, 0);" />
+        
+        <ui:VisualElement name="StatsBox" style="background-color: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-top: 20px; width: 400px;">
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                <ui:Label text="Elapsed Time:" style="color: white;" />
+                <ui:Label name="TimeValue" text="00:00" style="color: white; -unity-font-style: bold;" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-top: 10px;">
+                <ui:Label text="Drawing Score:" style="color: white;" />
+                <ui:Label name="ScoreValue" text="0%" style="color: white; -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label name="EndingDesc" text="Description of your journey..." style="margin-top: 20px; color: rgb(200, 200, 200); -unity-font-style: italic;" />
+        <ui:VisualElement name="ButtonContainer" style="flex-direction: row; justify-content: space-around; margin-top: 30px;">
+            <ui:Button name="RestartBtn" text="Restart Game" style="width: 150px; height: 50px; background-color: rgb(50, 50, 50); color: white;" />
+            <ui:Button name="MenuBtn" text="Main Menu" style="width: 150px; height: 50px; background-color: rgb(50, 50, 50); color: white;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
