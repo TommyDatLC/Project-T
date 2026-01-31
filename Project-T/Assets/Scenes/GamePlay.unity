@@ -1671,7 +1671,56 @@ Transform:
   m_GameObject: {fileID: 1059406040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.02, y: -4.05, z: -10}
+  m_LocalPosition: {x: -3.0403419, y: -4.0499997, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1083460453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1083460455}
+  - component: {fileID: 1083460454}
+  m_Layer: 0
+  m_Name: UIAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1083460454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083460453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c07866f8916e944a8e082f09a4cd0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIAudioManager
+  _sfxSource: {fileID: 0}
+  _bgmSource: {fileID: 0}
+  clickSound: {fileID: 0}
+  hoverSound: {fileID: 0}
+  bgmClip: {fileID: 0}
+--- !u!4 &1083460455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083460453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.70594, y: -9.05829, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3196,11 +3245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.04
+      value: 4.019658
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.27
+      value: -11.2699995
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3276,3 +3325,4 @@ SceneRoots:
   - {fileID: 439398657}
   - {fileID: 131432430}
   - {fileID: 999501012}
+  - {fileID: 1083460455}
