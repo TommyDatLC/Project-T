@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
        inputHandler.Enable();
        inputHandler.Player.Enable();
        inputHandler.Player.Interact.Enable();
+       circle_drawer.GameManagerInit(this);
        for (int i = 0; i < player.Length; i++)
        {
            Debug.Log($"Player {i}th");
@@ -142,6 +143,13 @@ public class GameManager : MonoBehaviour
        // 3. Capture and Go
        // Make sure "EndGame" matches the name in your Build Settings exactly
        GetComponent<ScreenCaptureManager>().CaptureAndTransition("EndGame");
+   }
+   public void HideAllPlayer()
+   {
+       for (int i = 0; i < player.Length; i++)
+       {
+           player[i].Hide();
+       }
    }
 
    // private void OnEnable()

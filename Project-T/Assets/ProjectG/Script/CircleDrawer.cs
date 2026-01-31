@@ -21,6 +21,12 @@ public class CircleDrawer : MonoBehaviour
     private bool isDrawing = false;
     [SerializeField] private Camera camera_for_drawing;
     private bool isDrawed;
+    private GameManager gm;
+
+    public void GameManagerInit(GameManager gm)
+    {
+        this.gm = gm;
+    }
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -55,6 +61,8 @@ public class CircleDrawer : MonoBehaviour
 
     void StartDrawing(Vector2 screenPos)
     {
+        if (isDrawed)
+            return;
         points.Clear();
         lineRenderer.positionCount = 0;
         isDrawing = true;
@@ -63,6 +71,8 @@ public class CircleDrawer : MonoBehaviour
 
     void ContinuingDrawing(Vector2 screenPos)
     {
+        if (isDrawed)
+            return;
         Vector3 currentPos = GetWorldPosition(screenPos);
         if (points.Count == 0 || Vector3.Distance(currentPos, points.Last()) > minDistance)
         {
@@ -73,16 +83,20 @@ public class CircleDrawer : MonoBehaviour
     public Action<float> onStopDrawing;
     async void StopDrawing()
     {
+        if (isDrawed)
+            return;
         Vector3 oldScale = transform.localScale;
         isDrawing = false;
         lastScore = CalculateCircleScore();
         Debug.Log($"Độ chính xác: {lastScore:F2}%");
-        isDrawed = true;
+        if (lastScore > 10f)
+            isDrawed = true;
         
         transform.DOScale(oldScale * 2f, 0.5f).SetEase(Ease.OutQuad);
         await Task.Delay(500);
         transform.DOScale(oldScale , 0.5f).SetEase(Ease.InQuad);
         onStopDrawing?.Invoke(lastScore);
+        gm.HideAllPlayer();
     }
     
     void AddPoint(Vector3 point)

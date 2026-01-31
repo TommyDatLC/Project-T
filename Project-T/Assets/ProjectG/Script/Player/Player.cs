@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DG.Tweening;
 using Script;
 using Script.Item;
 using UnityEditorInternal;
@@ -46,13 +48,14 @@ public class Player : MonoBehaviour
         setLock(true);
         Debug.Log($"final time is: {final_time}");
         is_Counter_Started = false;
+        
     }
 
     void StartTime()
     {
         start_runtime_counting = Time.time;
         is_Counter_Started = true;
-        return_point.gameObject.SetActive(true);
+       
     }
     [Header("Item")]
     Item pickingItem = null;
@@ -65,7 +68,11 @@ public class Player : MonoBehaviour
         item.transform.localPosition = Vector3.zero;
         StartTime();
     }
-    
+
+    public bool isHoldingItem()
+    {
+        return pickingItem != null;
+    }
     InteractableObject CheckNearbyFieldInteractable()
     {
         Vector2 detectionCenter = transform.position;
@@ -127,6 +134,7 @@ public class Player : MonoBehaviour
     {
         
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         return_point.Init(this);
     }
     [SerializeField] LayerMask interactable_layer_mask;
@@ -148,4 +156,41 @@ public class Player : MonoBehaviour
             return;
         meetInteractable();
     }
+
+    public void RotateItem()
+    {
+        pickingItem.Rotate();
+    }
+
+    [SerializeField] private float fadeDuration;
+
+        public void HideAndDisable()
+        {
+            // Chạy Coroutine để xử lý việc mờ dần
+            StartCoroutine(FadeOutRoutine());
+        }
+      
+        IEnumerator FadeOutRoutine()
+        {
+            Color startColor = spriteRenderer.color;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                // Tính toán độ Alpha (từ 1 giảm về 0)
+                float newAlpha = Mathf.Lerp(startColor.a, 0, elapsedTime / fadeDuration);
+                spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
+            
+                yield return null; // Đợi đến frame tiếp theo
+            }
+
+            // Đảm bảo alpha bằng 0 tuyệt đối
+            spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, 0);
+
+            // Sau khi mờ hẳn thì disable GameObject hoặc Component
+         
+            // Hoặc spriteRenderer.enabled = false;
+        }
+    
 }
