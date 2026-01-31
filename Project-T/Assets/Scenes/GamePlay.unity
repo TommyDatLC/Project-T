@@ -2194,18 +2194,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1553784009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597032151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1553784010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2311,38 +2299,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1553784012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597032151}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1597032151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1553784012}
-  - component: {fileID: 1553784009}
-  m_Layer: 0
-  m_Name: ReturningPoint1 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &1597032152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3161,11 +3117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6896577
+      value: 5.7099996
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37999964
+      value: -0.3800001
       objectReference: {fileID: 0}
     - target: {fileID: 7146028845886085805, guid: 04e71a41cbd9ef84daf71bec13b7c741, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3239,5 +3195,4 @@ SceneRoots:
   - {fileID: 1088601537}
   - {fileID: 1597032153}
   - {fileID: 439398657}
-  - {fileID: 1553784012}
   - {fileID: 131432430}
