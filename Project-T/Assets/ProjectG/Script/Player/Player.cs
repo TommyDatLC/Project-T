@@ -25,13 +25,19 @@ public class Player : MonoBehaviour
     bool is_Counter_Started = false;
     [SerializeField] ReturnPoint return_point;
     public void setLock(bool locked)
-    {
-        is_locked = locked;
-        if (locked) 
-            on_player_locked?.Invoke();
-        cam.enabled = !locked;
-        rb.simulated = !locked;
-    }
+{
+    is_locked = locked;
+    
+    // Kiểm tra an toàn trước khi Invoke
+    if (locked) 
+        on_player_locked?.Invoke();
+    
+    // Kiểm tra rb và cam có tồn tại không trước khi dùng
+    if (cam != null) cam.enabled = !locked;
+    
+    if (rb == null) rb = GetComponent<Rigidbody2D>(); // Tự tìm lại nếu chưa có
+    if (rb != null) rb.simulated = !locked;
+}
 
     public void StopTime()
     {
@@ -117,6 +123,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         return_point.Init(this);
     }
