@@ -9,7 +9,6 @@ using DG.Tweening;
 [RequireComponent(typeof(LineRenderer))]
 public class CircleDrawer : MonoBehaviour
 {
-    private bool hasStartedDrawing = false;
     [Header("Settings")]
     public Transform centerPoint;
     public float minDistance = 0.1f;
@@ -56,7 +55,6 @@ public class CircleDrawer : MonoBehaviour
 
     void StartDrawing(Vector2 screenPos)
     {
-        hasStartedDrawing = true;
         points.Clear();
         lineRenderer.positionCount = 0;
         isDrawing = true;
@@ -75,7 +73,6 @@ public class CircleDrawer : MonoBehaviour
     public Action<float> onStopDrawing;
     async void StopDrawing()
     {
-        if (!hasStartedDrawing) return;
         Vector3 oldScale = transform.localScale;
         isDrawing = false;
         lastScore = CalculateCircleScore();
