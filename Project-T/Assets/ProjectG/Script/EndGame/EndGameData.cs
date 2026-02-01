@@ -2,8 +2,6 @@ using UnityEngine;
 
 namespace Script.EndGame
 {
-    
-
     public static class EndGameData
     {
         public static EndgameEvaluator.EndgameResult Result;

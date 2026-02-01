@@ -10,7 +10,6 @@ namespace Script.EndGame
     {
         [Header("UI Setup")]
         public UIDocument uiDoc;
-
         public VisualTreeAsset darkenUXML;
         public VisualTreeAsset birdDramaticUXML;
         public VisualTreeAsset birdReactionUXML;
@@ -27,14 +26,15 @@ namespace Script.EndGame
 
         private IEnumerator ResultSequence()
         {
-            // 1. Setup the Background (The Screenshot)
+            var res = EndGameData.Result;
+
+            // 1. Setup Background Screenshot
             if (EndGameData.Screenshot != null)
             {
                 root.style.backgroundImage = new StyleBackground(EndGameData.Screenshot);
             }
 
-            // 2. Add Persistent Darken Overlay
-            // This stays in the root while other popups are added/removed on top of it
+            // 2. Add Dimmer Overlay
             VisualElement darken = darkenUXML.Instantiate();
             darken.style.position = Position.Absolute;
             darken.style.width = Length.Percent(100);
@@ -48,57 +48,40 @@ namespace Script.EndGame
                 DOTween.To(() => 0f, x => dimmer.style.opacity = x, 0.8f, 1.5f);
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
 
-            // 3. Bird Dramatic Popup (Show -> Wait -> Hide)
+            // 3. Bird Dramatic Popup (Injection Point for Emojis)
             VisualElement bird = birdDramaticUXML.Instantiate();
             root.Add(bird);
-            AnimateIn(bird.Q("BirdSquare"));
-            yield return new WaitForSeconds(4f);
+            
+            Label birdLabel = bird.Q<Label>(); 
+            VisualElement square = bird.Q("BirdSquare");
+
+            if (birdLabel != null) birdLabel.text = res.emoji;
+            if (square != null)
+            {
+                square.style.borderTopColor = res.themeColor;
+                square.style.borderBottomColor = res.themeColor;
+                square.style.borderLeftColor = res.themeColor;
+                square.style.borderRightColor = res.themeColor;
+            }
+
+            AnimateIn(square);
+            yield return new WaitForSeconds(3f);
             root.Remove(bird);
 
-            // 4. Reaction Text (Show -> Wait -> Hide)
+            // 4. Reaction Text
             VisualElement reaction = birdReactionUXML.Instantiate();
             root.Add(reaction);
-            var res = EndGameData.Result;
             
             Label reactionLabel = reaction.Q<Label>("ReactionText");
-
             if (reactionLabel != null)
             {
-                // Clear any previous custom styling if necessary
                 reactionLabel.style.color = res.themeColor;
-
-                switch (res.type)
-                {
-                    case EndgameEvaluator.EndingType.SecretFamily:
-                        reactionLabel.text = "The flock recognizes its own. You are home.";
-                        break;
-
-                    case EndgameEvaluator.EndingType.Frightening:
-                        reactionLabel.text = "The predator fled in absolute terror!";
-                        // Tip: You could trigger a screen shake here
-                        break;
-
-                    case EndgameEvaluator.EndingType.Questioning:
-                        reactionLabel.text = "The bird is... deeply confused by your existence.";
-                        break;
-
-                    case EndgameEvaluator.EndingType.Nonchalant:
-                        reactionLabel.text = "It left, but it wasn't impressed.";
-                        break;
-
-                    case EndgameEvaluator.EndingType.Failure:
-                        reactionLabel.text = "You've become a very artistic snack.";
-                        break;
-
-                    default:
-                        reactionLabel.text = "The encounter ends.";
-                        break;
-                }
+                reactionLabel.text = GetReactionText(res.type);
             }
             
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4f);
             root.Remove(reaction);
 
             // 5. Final Stats
@@ -110,17 +93,21 @@ namespace Script.EndGame
             stats.Q<Label>("ScoreValue").text = $"{EndGameData.FinalScore:F1}%";
             stats.Q<Label>("TimeValue").text = $"{EndGameData.FinalTime:F1}s";
 
-            // Button Listeners - Ensure these scene names match your Build Settings
-            stats.Q<Button>("RestartBtn").clicked += () =>
+            // Button Listeners
+            stats.Q<Button>("RestartBtn").clicked += () => SceneManager.LoadSceneAsync("Scenes/GamePlay");
+            stats.Q<Button>("MenuBtn").clicked += () => SceneManager.LoadSceneAsync("MainMenu");
+        }
+
+        private string GetReactionText(EndgameEvaluator.EndingType type)
+        {
+            return type switch
             {
-                GridLoadingController.Instance.TransitionIn();
-                SceneManager.LoadSceneAsync("Scenes/GamePlay");
-            };
-            
-            stats.Q<Button>("MenuBtn").clicked += () =>
-            {
-                GridLoadingController.Instance.TransitionIn();
-                SceneManager.LoadSceneAsync("MainMenu");
+                EndgameEvaluator.EndingType.SecretFamily => "The flock recognizes its own. You are home.",
+                EndgameEvaluator.EndingType.Frightening  => "The predator fled in absolute terror!",
+                EndgameEvaluator.EndingType.Questioning  => "The bird is... deeply confused by your existence.",
+                EndgameEvaluator.EndingType.Nonchalant   => "It left, but it wasn't impressed.",
+                EndgameEvaluator.EndingType.Failure      => "You've become a very artistic snack.",
+                _                                       => "The encounter ends."
             };
         }
 
@@ -128,7 +115,10 @@ namespace Script.EndGame
         {
             if (el == null) return;
             el.style.opacity = 0;
-            DOTween.To(() => 0f, x => el.style.opacity = x, 1f, 1f);
+            el.transform.scale = Vector3.one * 0.5f;
+            
+            DOTween.To(() => 0f, x => el.style.opacity = x, 1f, 0.5f);
+            DOTween.To(() => el.transform.scale, x => el.transform.scale = x, Vector3.one, 0.8f).SetEase(Ease.OutBack);
         }
         
         private void OnDestroy()

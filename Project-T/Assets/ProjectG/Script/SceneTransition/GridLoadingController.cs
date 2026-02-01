@@ -26,8 +26,6 @@ public class GridLoadingController : MonoBehaviour
     private Label _label;
     private GridElement _gridDrawer;
     
-  
-
     private void Start()
     {
         if (Instance == null)

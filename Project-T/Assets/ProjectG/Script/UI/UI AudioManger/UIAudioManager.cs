@@ -56,7 +56,7 @@ public class UIAudioManager : MonoBehaviour
     {
         // Kiểm tra chính xác tên Scene từ Project [image_11e8dc.png]
         // Nếu tên scene là "MainMenu" thì phát nhạc, các scene khác thì dừng
-        if (scene.name == "MainMenu")
+        if (scene.name == "MainMenu" || scene.name == "GamePlay" || scene.name == "EndGame")
         {
             PlayBGM();
         }
