@@ -7,7 +7,7 @@ namespace Script.Item
         SpriteRenderer game_map_bound;// Kéo vùng Checkerboard vào
         SpriteRenderer spawn_bound;// Kéo vùng Trắng vào
         public static int itemCount;
-        public const int maxItem = 8;
+        public const int maxItem = 16;
         public bool is_bird;
         public Vector2 GetRandomPositionOutside()
         {
