@@ -382,11 +382,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &560235250 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8319926456911026325, guid: 9574750b7add6ad4db01e80fa517f60e, type: 3}
-  m_PrefabInstance: {fileID: 5000573085850067796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &560235255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383347165506145865, guid: 9574750b7add6ad4db01e80fa517f60e, type: 3}
@@ -1258,12 +1253,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e84986a060c44bf8a71e6bbb1e585d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectG.Script.GameManager
-  player_prefab: {fileID: 560235250}
-  face_slots:
-  - {fileID: 136921016}
-  indicators:
-  - {fileID: 9087421}
-  main_camera: {fileID: 1015601642}
+  player: []
+  game_map: {fileID: 0}
+  spawn: {fileID: 0}
+  spawner_obj: {fileID: 0}
+  circle_drawer: {fileID: 0}
+  virtual_camera: {fileID: 0}
+  overlay_controller: {fileID: 0}
+  fulfilledFamilyCondition: 0
 --- !u!4 &1844006063
 Transform:
   m_ObjectHideFlags: 0
