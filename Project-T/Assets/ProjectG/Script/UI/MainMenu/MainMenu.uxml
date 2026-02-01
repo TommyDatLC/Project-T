@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/ProjectG/Script/UI/MainMenu/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=58b0e01ebc124de8b3d7eb876de9c8b3&amp;type=3#MainMenuStyle"/>
-    <ui:VisualElement name="main-container" class="main-container">
+    <ui:VisualElement name="main-container" class="main-container" style="background-image: url(&quot;project://database/Assets/ProjectG/Image/Game%20Jam%20BG.png?fileID=2800000&amp;guid=a6249fabac36a74449e1e847a4652af0&amp;type=3#Game Jam BG&quot;);">
         <ui:Label text="mask the raid" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/doublebass.rial-bold.ttf?fileID=12800000&amp;guid=cfab19dfd3a69064e8e8291d11ecd9ae&amp;type=3#doublebass.rial-bold&quot;); -unity-font-style: normal; color: rgb(0, 171, 14);"/>
         <ui:VisualElement class="menu-buttons">
             <GameButton icon-image="" name="btn-play" double-click-selects-word="true" text="PLAY GAME" class="menu-btn" style="-unity-font-definition: url(&quot;project://database/Assets/ProjectG/Font/bahnschrift.ttf?fileID=12800000&amp;guid=9517aafdb668f354dbb561cf2e758bb0&amp;type=3#bahnschrift&quot;);"/>
